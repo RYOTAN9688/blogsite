@@ -6,8 +6,8 @@ import { SkillGraph } from './SkillGraph';
 export default function Profile() {
   return (
     <>
-      <div className='flex flex-w container mx-auto'>
-        <div className='flex flex-col flex-wrap items-center py-24  bg-gray-500'>
+      <div className='flex flex-wrap  container mx-auto'>
+        <div className='flex flex-col  items-center py-24 bg-gray-500'>
           <div>
             <Image
               className='rounded-r-full rounded-t-full rounded-b-full '
