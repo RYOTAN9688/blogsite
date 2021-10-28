@@ -56,21 +56,6 @@ export const Header = ({ title = '' }) => {
           </button>
         </div>
       </header>
-      {/* <header>
-        <Head>
-          <title>{title}</title>
-        </Head>
-        <nav>
-          {navItems.map(({ label, page }) => {
-            <li key={label}>
-              <Link href={page}>
-                <a>{label}</a>
-              </Link>
-              ;
-            </li>;
-          })}
-        </nav>
-      </header> */}
     </>
   );
 };
