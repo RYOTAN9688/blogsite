@@ -10,6 +10,7 @@ export default function Profile() {
         <div className='flex flex-col  items-center pt-6 bg-gray-500'>
           <div>
             <Image
+              alt='プロフィール画像'
               className='rounded-r-full rounded-t-full rounded-b-full '
               src='/profile.jpg'
               width={200}

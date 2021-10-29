@@ -2,7 +2,7 @@ import BlogLayout from '../layouts/BlogLayout';
 import { getNotionData, getPage, getBlocks } from '../../lib/getNotionData';
 import { Text, ListItem, Heading, ToDo, Toggle } from '../components/ContentBlock';
 import { GetStaticPropsContext } from 'next';
-
+import Image from 'next/image';
 const databaseId = process.env.NOTION_DATABASE_ID;
 
 export default function Post({ page, blocks }) {
@@ -50,14 +50,18 @@ export default function Post({ page, blocks }) {
             return <ToDo id={id} key={id} value={value} text={value.text} />;
 
           case 'toggle':
-            return <Toggle key={id} text={value.text} children={value.children} />;
+            return (
+              <Toggle key={id} text={value.text}>
+                children={value.children}
+              </Toggle>
+            );
 
           case 'image':
             const imageSrc = value.type === 'external' ? value.external.url : value.file.url;
             const caption = value.caption.length ? value.caption[0].plain_text : '';
             return (
               <figure key={id}>
-                <img alt={caption} src={imageSrc} />
+                <Image alt={caption} src={imageSrc} />
                 {caption && <figcaption className='mt-2'>{caption}</figcaption>}
               </figure>
             );
