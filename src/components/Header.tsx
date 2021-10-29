@@ -1,11 +1,5 @@
 import Head from 'next/head';
-// import { userRouter } from 'next/router';
 import Link from 'next/link';
-
-const navItems: { label: string; page: string }[] = [
-  { label: 'Home', page: '/' },
-  { label: 'Blog', page: '/blog' },
-];
 
 export const Header = ({ title = '' }) => {
   return (
@@ -13,9 +7,9 @@ export const Header = ({ title = '' }) => {
       <Head>
         <title>{title}</title>
       </Head>
-      <header className='text-gray-600 body-font '>
-        <div className='container mx-auto flex flex-wrap justify-between p-5 flex-col md:flex-row items-center'>
-          <a className='flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0'>
+      <header>
+        <div className='container mx-auto flex flex-wrap justify-between p-5 flex-col md:flex-row items-center bg-white'>
+          <a className='flex title-font font-medium items-center text-gray-900 mb-2 md:mb-0'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               fill='none'
@@ -28,7 +22,7 @@ export const Header = ({ title = '' }) => {
             >
               <path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'></path>
             </svg>
-            <span className='ml-3 text-xl'>PortFolio</span>
+            <span className='ml-3 text-5xl'>PortFolio</span>
           </a>
           <nav>
             <Link href='/'>

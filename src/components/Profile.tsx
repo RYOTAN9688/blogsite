@@ -7,13 +7,14 @@ export default function Profile() {
   return (
     <>
       <div className='flex flex-wrap  container mx-auto'>
-        <div className='flex flex-col  items-center py-24 bg-gray-500'>
+        <div className='flex flex-col  items-center pt-6 bg-gray-500'>
           <div>
             <Image
               className='rounded-r-full rounded-t-full rounded-b-full '
               src='/profile.jpg'
               width={200}
               height={200}
+              priority={true}
               loading='eager'
               objectFit='cover'
             />

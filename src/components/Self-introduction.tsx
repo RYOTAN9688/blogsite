@@ -1,7 +1,7 @@
 export const Self_introduction = () => {
   return (
     <>
-      <div className='flex flex-col flex-wrap lg:py-6 -mb-10 lg:w-1/2 lg:pl-12 lg:text-left text-center'>
+      <div className='flex flex-col flex-wrap  lg:pl-12 lg:text-left text-center'>
         <div className='flex flex-col mb-10 lg:items-start items-center'>
           <div className='flex-grow'>
             <h1 className='text-white text-lg title-font font-medium mb-3'>自己紹介</h1>
@@ -11,7 +11,7 @@ export const Self_introduction = () => {
             </p>
           </div>
         </div>
-        <div className='flex flex-col mb-10 lg:items-start items-center'>
+        <div className='flex flex-col lg:items-start items-center'>
           <div className='flex-grow'>
             <h1 className='text-white text-lg title-font font-black mb-3'>HOBBY</h1>
             <ul>

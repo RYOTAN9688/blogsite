@@ -10,13 +10,11 @@ export default function Home({ posts }) {
           <h1 className='font-bold text-3xl md:text-center w-full md:text-5xl tracking-tight mb-2 text-black mx-auto max-w-xl'>
             My Blog
           </h1>
-          <p className='text-gray-700 mb-5 md:text-center max-w-xl mx-auto'>
-            Notionを使用したブログページを作成しました！
+          <p className='text-gray-700 mb-5 py-4 md:text-center max-w-xl mx-auto'>
+            NotionAPIを使用したブログページを作成しました！
           </p>
         </div>
-        <h2 className='font-bold text-2xl md:text-3xl tracking-tight mb-4 mt-8 text-black'>
-          Blog Posts
-        </h2>
+        <h2 className='font-bold text-2xl md:text-3xl tracking-tight mb-4 mt-8 text-black'>Blog</h2>
 
         {!posts.length && <p className='text-gray-600 mb-4'>No posts found.</p>}
 
