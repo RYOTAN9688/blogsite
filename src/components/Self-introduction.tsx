@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import OtherSite from './OtherSites';
 export const Self_introduction = () => {
   return (
     <>
@@ -27,6 +28,7 @@ export const Self_introduction = () => {
             車を走らせることが好きなので、天気の良い日は海に行ったり、景色のいいところまでドライブします！！
           </p>
         </ul>
+        <OtherSite />
       </div>
     </>
   );
