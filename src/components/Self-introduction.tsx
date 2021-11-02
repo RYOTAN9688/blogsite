@@ -2,7 +2,7 @@ import Image from 'next/image';
 export const Self_introduction = () => {
   return (
     <>
-      <div className='md:w-1/2 md:pr-12 md:py-8 md:border-r md:border-b-0 mb-10 md:mb-0 pb-10 border-b border-gray-200 bg-gray-400 flex items-center flex-col'>
+      <div className='md:w-1/2 md:pr-12 md:py-8 md:border-r md:border-b-0 mb-10 md:mb-0 pb-10 border-b border-gray-200 bg-gray-400 flex items-center fle'>
         <Image
           src='/profile.jpg'
           width={200}
