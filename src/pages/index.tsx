@@ -1,13 +1,12 @@
-import { Header } from '../components/Header';
+import Container from '../components/Container';
 import Profile from '../components/Profile';
 
 export const databaseId = process.env.NOTION_DATABASE_ID;
 
 export default function Home() {
   return (
-    <div>
-      <Header title='Home' />
+    <Container>
       <Profile />
-    </div>
+    </Container>
   );
 }

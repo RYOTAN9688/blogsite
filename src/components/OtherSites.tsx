@@ -23,7 +23,7 @@ const OtherSites = [
 
 export default function OtherSite() {
   return (
-    <div className='flex space-x-5  justify-center pt-5'>
+    <div className='flex space-x-5 justify-center pt-5'>
       {OtherSites.map(({ Comp, link, alt }) => {
         return (
           <a key={link} href={link} aria-label={alt}>

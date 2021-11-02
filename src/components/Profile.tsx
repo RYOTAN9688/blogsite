@@ -1,29 +1,18 @@
-import Image from 'next/image';
-import OtherSite from '../components/OtherSites';
 import { Self_introduction } from './Self-introduction';
-import { SkillGraph } from './SkillGraph';
+import { Skill } from './Skill';
 
 export default function Profile() {
   return (
     <>
-      <div className='flex flex-wrap  container mx-auto'>
-        <div className='flex flex-col  items-center pt-6 bg-gray-500'>
-          <div>
-            <Image
-              alt='プロフィール画像'
-              className='rounded-r-full rounded-t-full rounded-b-full '
-              src='/profile.jpg'
-              width={200}
-              height={200}
-              priority={true}
-              loading='eager'
-              objectFit='cover'
-            />
+      <div>
+        <section className='text-gray-600 body-font'>
+          <div className='container flex flex-wrap px-5 py-3 mx-auto items-center'>
+            <Self_introduction />
+            <div className='flex flex-col md:w-1/2 md:pl-12'>
+              <Skill />
+            </div>
           </div>
-          <OtherSite />
-          <Self_introduction />
-        </div>
-        <SkillGraph />
+        </section>
       </div>
     </>
   );
