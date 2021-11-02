@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react';
 
-export const Header = ({ title = '' }) => {
+export const Header = ({ title = 'portfolio' }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const genericHamburgerLine = `h-1 w-6 my-1 rounded-full bg-black transition ease transform duration-300`;

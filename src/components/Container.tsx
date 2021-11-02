@@ -6,8 +6,8 @@ export default function Container(props) {
   const { children, ...customMeta } = props;
   const router = useRouter();
   const meta = {
-    title: 'Blog',
-    description: `Nakao Ryotaのブログ`,
+    title: 'portfolio',
+    description: 'portfolioサイト',
     type: 'website',
     image: '/site.png',
     ...customMeta,
