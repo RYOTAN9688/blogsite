@@ -1,6 +1,4 @@
-type Props = {
-  height: number;
-};
+import { Props } from './Twitter';
 const GitHub = (props: Props) => {
   return (
     <svg
