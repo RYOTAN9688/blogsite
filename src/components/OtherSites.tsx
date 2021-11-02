@@ -1,5 +1,6 @@
 import GitHub from '../svgs/GitHub';
 import Twitter from '../svgs/Twitter';
+import GitLab from '../svgs/GitLab';
 const OtherSites = [
   {
     Comp: Twitter,
@@ -10,6 +11,11 @@ const OtherSites = [
     Comp: GitHub,
     alt: 'GitHub',
     link: 'https://github.com/RYOTAN9688',
+  },
+  {
+    Comp: GitLab,
+    alt: 'GitLab',
+    link: 'https://gitlab.com/RYOTAN9688',
   },
   // {
   //   alt: 'Zenn',
