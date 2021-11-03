@@ -12,9 +12,6 @@ export const Header = ({ title = 'portfolio' }) => {
 
   return (
     <>
-      <Head>
-        <title>{title}</title>
-      </Head>
       <header className='container mx-auto text-gray-300 py-2 '>
         <div className='flex justify-between items-center'>
           <a className='flex title-font font-medium items-center text-gray-900 mb-2 md:mb-0'>
