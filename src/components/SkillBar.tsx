@@ -18,7 +18,7 @@ export const SkillBar = ({ name, percentWidth, percent, color }: Props) => {
       <div className='grid grid-cols-10 text-left'>
         <div className='flex overflow-hidden col-span-8 mt-2 h-3 text-xs bg-bar-lightgreen rounded'>
           <div
-            className={`${percentWidth} flex flex-col justify-center text-center text-white whitespace-nowrap bg-bar-green shadow-none`}
+            className={`${percentWidth} ${color}flex flex-col justify-center text-center text-white whitespace-nowrap bg-bar-green shadow-none`}
           ></div>
         </div>
         <div className='col-span-2 ml-3'>

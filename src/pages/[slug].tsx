@@ -3,6 +3,7 @@ import { getNotionData, getPage, getBlocks } from '../../lib/getNotionData';
 import { Text, ListItem, Heading, ToDo, Toggle } from '../components/ContentBlock';
 import { GetStaticPropsContext } from 'next';
 import Image from 'next/image';
+import { PageHead } from '../components/PageHead';
 const databaseId = process.env.NOTION_DATABASE_ID;
 
 export default function Post({ page, blocks }) {
@@ -11,68 +12,76 @@ export default function Post({ page, blocks }) {
   }
 
   return (
-    <BlogLayout data={page}>
-      <span className='text-sm text-gray-700'>
-        {new Date(page.created_time).toLocaleString('en-US', {
-          month: 'short',
-          day: '2-digit',
-          year: 'numeric',
+    <>
+      <PageHead
+        title='BlogContent'
+        description='Blogの内容が書いてあります'
+        type='artcle'
+        url='https://portfolio-sigma-lime.vercel.app/blog'
+      />
+      <BlogLayout data={page}>
+        <span className='text-sm text-gray-700'>
+          {new Date(page.created_time).toLocaleString('en-US', {
+            month: 'short',
+            day: '2-digit',
+            year: 'numeric',
+          })}
+        </span>
+
+        <h1 className='font-bold text-3xl md:text-5xl tracking-tight mb-5 text-black'>
+          {page.properties.Post.title[0].plain_text}
+        </h1>
+
+        {blocks.map((block) => {
+          const { type, id } = block;
+          const value = block[type];
+          const { text } = value;
+
+          switch (type) {
+            case 'paragraph':
+              return <Text text={value.text} id={id} key={id} />;
+
+            case 'heading_1':
+              return <Heading text={text} id={id} level={type} key={id} />;
+
+            case 'heading_2':
+              return <Heading text={text} id={id} level={type} key={id} />;
+
+            case 'heading_3':
+              return <Heading text={text} id={id} level={type} key={id} />;
+
+            case 'bulleted_list_item':
+            case 'numbered_list_item':
+              return <ListItem key={id} text={value.text} id={id} />;
+
+            case 'to_do':
+              return <ToDo id={id} key={id} value={value} text={value.text} />;
+
+            case 'toggle':
+              return (
+                <Toggle key={id} text={value.text}>
+                  children={value.children}
+                </Toggle>
+              );
+
+            case 'image':
+              const imageSrc = value.type === 'external' ? value.external.url : value.file.url;
+              const caption = value.caption.length ? value.caption[0].plain_text : '';
+              return (
+                <figure key={id}>
+                  <Image alt={caption} src={imageSrc} />
+                  {caption && <figcaption className='mt-2'>{caption}</figcaption>}
+                </figure>
+              );
+
+            default:
+              return `Unsupported block (${
+                type === 'unsupported' ? 'unsupported by Notion API' : type
+              })`;
+          }
         })}
-      </span>
-
-      <h1 className='font-bold text-3xl md:text-5xl tracking-tight mb-5 text-black'>
-        {page.properties.Post.title[0].plain_text}
-      </h1>
-
-      {blocks.map((block) => {
-        const { type, id } = block;
-        const value = block[type];
-        const { text } = value;
-
-        switch (type) {
-          case 'paragraph':
-            return <Text text={value.text} id={id} key={id} />;
-
-          case 'heading_1':
-            return <Heading text={text} id={id} level={type} key={id} />;
-
-          case 'heading_2':
-            return <Heading text={text} id={id} level={type} key={id} />;
-
-          case 'heading_3':
-            return <Heading text={text} id={id} level={type} key={id} />;
-
-          case 'bulleted_list_item':
-          case 'numbered_list_item':
-            return <ListItem key={id} text={value.text} id={id} />;
-
-          case 'to_do':
-            return <ToDo id={id} key={id} value={value} text={value.text} />;
-
-          case 'toggle':
-            return (
-              <Toggle key={id} text={value.text}>
-                children={value.children}
-              </Toggle>
-            );
-
-          case 'image':
-            const imageSrc = value.type === 'external' ? value.external.url : value.file.url;
-            const caption = value.caption.length ? value.caption[0].plain_text : '';
-            return (
-              <figure key={id}>
-                <Image alt={caption} src={imageSrc} />
-                {caption && <figcaption className='mt-2'>{caption}</figcaption>}
-              </figure>
-            );
-
-          default:
-            return `Unsupported block (${
-              type === 'unsupported' ? 'unsupported by Notion API' : type
-            })`;
-        }
-      })}
-    </BlogLayout>
+      </BlogLayout>
+    </>
   );
 }
 
