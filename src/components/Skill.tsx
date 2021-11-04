@@ -1,49 +1,23 @@
-import { SkillBar, Props } from './SkillBar';
+import Image from 'next/image';
+import { skilldata } from './Skilldata';
 
-const skill1: Props = {
-  name: 'Git,GitHub',
-  percentWidth: 'w-3/5',
-  percent: 80,
-  color: 'text-red-200',
-};
-const skill2: Props = {
-  name: 'JavaScript',
-  percentWidth: 'w-6/10',
-  percent: 70,
-  color: 'text-yellow-200',
-};
-const skill3: Props = {
-  name: 'TypeScript',
-  percentWidth: 'w-4/10',
-  percent: 40,
-  color: 'text-green-200',
-};
-const skill4: Props = {
-  name: 'Next.js',
-  percentWidth: 'w-4/10',
-  percent: 40,
-  color: 'text-blue-200',
-};
+const skills = skilldata;
 
-const skills: Props[] = [skill1, skill2, skill3, skill4];
-
-export const Skill = () => {
+export const Skills = () => {
   return (
-    <section>
-      <div>
+    <>
+      <div className='grid grid-cols-2 gap-3 flex-wrap  '>
         {skills.map((skill, index) => {
           return (
             <div key={index}>
-              <SkillBar
-                name={skill.name}
-                percentWidth={skill.percentWidth}
-                percent={skill.percent}
-                color={skill.color}
-              />
+              <div className='flex mb-5 items-center bg-gray-100 w-48  md:w-64  '>
+                <Image src={skill.image} alt={skill.alt} width={50} height={50} />
+                <h2 className='font-bold text-gray-800 pl-1 '>{skill.name}</h2>
+              </div>
             </div>
           );
         })}
       </div>
-    </section>
+    </>
   );
 };
