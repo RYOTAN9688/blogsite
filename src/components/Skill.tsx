@@ -11,7 +11,7 @@ export const Skills = () => {
         {skills.map((skill, index) => {
           return (
             <div key={index}>
-              <div className='flex mb-5 items-center bg-gray-100 w-48  md:w-64  '>
+              <div className='flex mb-5 items-center bg-gray-100 w-32  md:w-64  '>
                 <Image src={skill.image} alt={skill.alt} width={50} height={50} />
                 <h2 className='font-bold text-gray-800 pl-1 '>{skill.name}</h2>
               </div>
@@ -20,7 +20,7 @@ export const Skills = () => {
         })}
       </div>
       <h1 className='font-bold text-4xl pb-3 text-red-500'>OtherSkills</h1>
-      <div className='flex space-x-2'>
+      <div className='grid grid-cols-2 gap-3 flex-wrap'>
         {otherSkilldata.map((otherSkill, index) => {
           return (
             <div key={index}>
