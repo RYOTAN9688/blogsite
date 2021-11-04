@@ -3,13 +3,13 @@ import { SkillBar, Props } from './SkillBar';
 const skill1: Props = {
   name: 'Git,GitHub',
   percentWidth: 'w-3/5',
-  percent: 60,
+  percent: 80,
   color: 'text-red-200',
 };
 const skill2: Props = {
   name: 'JavaScript',
   percentWidth: 'w-6/10',
-  percent: 60,
+  percent: 70,
   color: 'text-yellow-200',
 };
 const skill3: Props = {
