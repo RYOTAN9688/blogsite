@@ -28,7 +28,6 @@ export const Self_introduction = () => {
             車を走らせることが好きなので、天気の良い日は海に行ったり、景色のいいところまでドライブします！！
           </p>
         </ul>
-        <OtherSite />
       </div>
     </>
   );

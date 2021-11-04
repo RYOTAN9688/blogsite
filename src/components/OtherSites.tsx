@@ -1,7 +1,8 @@
 import GitHub from '../svgs/GitHub';
 import Twitter from '../svgs/Twitter';
 import GitLab from '../svgs/GitLab';
-const OtherSites = [
+
+export const OtherSites = [
   {
     Comp: Twitter,
     alt: 'twiiter icon',
