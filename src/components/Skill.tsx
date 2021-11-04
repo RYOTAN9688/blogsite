@@ -1,11 +1,12 @@
 import Image from 'next/image';
-import { skilldata } from './Skilldata';
+import { otherSkilldata, skilldata } from './Skilldata';
 
 const skills = skilldata;
 
 export const Skills = () => {
   return (
     <>
+      <h1 className='font-bold text-4xl pb-3 text-red-500 '>Skills</h1>
       <div className='grid grid-cols-2 gap-3 flex-wrap  '>
         {skills.map((skill, index) => {
           return (
@@ -14,6 +15,16 @@ export const Skills = () => {
                 <Image src={skill.image} alt={skill.alt} width={50} height={50} />
                 <h2 className='font-bold text-gray-800 pl-1 '>{skill.name}</h2>
               </div>
+            </div>
+          );
+        })}
+      </div>
+      <h1 className='font-bold text-4xl pb-3 text-red-500'>OtherSkills</h1>
+      <div className='flex space-x-2'>
+        {otherSkilldata.map((otherSkill, index) => {
+          return (
+            <div key={index}>
+              <h2 className='font-bold text-base'>{otherSkill.name}</h2>
             </div>
           );
         })}
