@@ -1,3 +1,4 @@
+import { Footer } from './Footer';
 import { Header } from './Header';
 
 export default function Container(props) {
@@ -8,7 +9,7 @@ export default function Container(props) {
       <Header />
       <main id='skip' className='px-4'>
         {children}
-        {/* <Footer /> */}
+        <Footer />
       </main>
     </>
   );
