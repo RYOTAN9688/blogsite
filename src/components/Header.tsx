@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react';
 
-export const Header = ({ title = 'portfolio' }) => {
+export const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const genericHamburgerLine = `h-1 w-6 my-1 rounded-full bg-black transition ease transform duration-300`;
@@ -46,10 +46,14 @@ export const Header = ({ title = 'portfolio' }) => {
         </div>
         <nav className={`${isOpen ? 'flex flex-col' : 'hidden md:flex justify-center'}`}>
           <Link href='/'>
-            <a className='mr-5 text-gray-900  hover:underline text-xl py-2 px-8'>Home</a>
+            <a className='mr-5 text-gray-900 hover:text-blue-500  hover:underline text-xl py-2 px-8'>
+              Home
+            </a>
           </Link>
           <Link href='/blog'>
-            <a className='mr-5 text-gray-900 hover:underline text-xl py-2 px-8'>Blog</a>
+            <a className='mr-5 text-gray-900  hover:text-blue-500 hover:underline text-xl py-2 px-8'>
+              Blog
+            </a>
           </Link>
         </nav>
       </header>
