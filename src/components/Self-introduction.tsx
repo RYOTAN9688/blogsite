@@ -11,20 +11,20 @@ export const Self_introduction = () => {
           alt='プロフィール画像'
           className='rounded-r-full rounded-t-full rounded-b-full'
         />
-        <h1 className='sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900'>自己紹介</h1>
-        <p className='leading-relaxed text-base'>
+        <h1 className='sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900'>About</h1>
+        <p className='leading-relaxed text-base text-white pl-2'>
           1996年生まれ。石川生まれでずっと石川に住んでいます（地元愛💓）。
           フロントエンドエンジニアを目指して勉強中です。
         </p>
-        <h2 className='title-font font-semibold text-gray-800'>HOBBY</h2>
+        <h2 className='title-font font-semibold text-2xl text-blue-500'>HOBBY</h2>
         <ul>
-          <li className='font-medium text-gray-200'>音楽を聴くこと</li>
-          <p className='text-gray-300'>
+          <li className='font-medium text-gray-200'>音楽を聴くこと🎸</li>
+          <p className='text-white'>
             基本的になんでも聞きます。
             学生のころは80年代、90年代の曲をよく聞いていてBOOWYが大好きでした。
           </p>
-          <li className='font-medium text-gray-200'>ドライブ</li>
-          <p className='text-gray-300'>
+          <li className='font-medium text-gray-200 pt-3'>ドライブ🚙</li>
+          <p className='text-white'>
             車を走らせることが好きなので、天気の良い日は海に行ったり、景色のいいところまでドライブします！！
           </p>
         </ul>
