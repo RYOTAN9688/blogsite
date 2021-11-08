@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -12,9 +11,9 @@ export const Header = () => {
 
   return (
     <>
-      <header className='container mx-auto text-gray-300 py-2 '>
-        <div className='flex justify-between items-center'>
-          <div className='flex'>
+      <header className='container  mx-auto text-gray-300 py-2 '>
+        <div className='container flex justify-between items-center text-gray-300 py-2'>
+          <div className='flex items-center'>
             <Link href='/'>
               <a>
                 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512' className='w-14 h-14'>
