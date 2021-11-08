@@ -2,6 +2,7 @@ import Container from '../components/Container';
 import Link from 'next/link';
 import { getNotionData } from '../../lib/getNotionData';
 import { PageHead } from '../components/PageHead';
+import { GetStaticProps } from 'next';
 
 export default function Home({ posts }) {
   return (
@@ -50,12 +51,13 @@ export default function Home({ posts }) {
   );
 }
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const database = await getNotionData(process.env.NOTION_DATABASE_ID);
 
   return {
     props: {
       posts: database,
     },
+    revalidate: 10,
   };
 };

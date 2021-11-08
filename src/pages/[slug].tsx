@@ -1,7 +1,7 @@
 import BlogLayout from '../layouts/BlogLayout';
 import { getNotionData, getPage, getBlocks } from '../../lib/getNotionData';
 import { Text, ListItem, Heading, ToDo, Toggle } from '../components/ContentBlock';
-import { GetStaticPropsContext } from 'next';
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
 import Image from 'next/image';
 import { PageHead } from '../components/PageHead';
 const databaseId = process.env.NOTION_DATABASE_ID;
@@ -69,7 +69,7 @@ export default function Post({ page, blocks }) {
               const caption = value.caption.length ? value.caption[0].plain_text : '';
               return (
                 <figure key={id}>
-                  <Image alt={caption} src={imageSrc} />
+                  <Image alt={caption} src={imageSrc} width={480} height={320} />
                   {caption && <figcaption className='mt-2'>{caption}</figcaption>}
                 </figure>
               );
@@ -85,7 +85,7 @@ export default function Post({ page, blocks }) {
   );
 }
 
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
   const database = await getNotionData(databaseId);
   return {
     paths: database.map((page) => ({
@@ -98,7 +98,7 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async (context: GetStaticPropsContext) => {
+export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
   const { slug } = context.params;
   const database = await getNotionData(databaseId);
   //@ts-ignore
