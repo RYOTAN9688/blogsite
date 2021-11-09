@@ -10,7 +10,7 @@ interface Props {
 
 export const Blogitem: React.VFC<Props> = ({ url, title, description, image }) => {
   return (
-    <div className='shadow-xl cursor-pointer transition duration-100  ease-linear transform hover:scale-95 hover:shadow-lg flex flex-col items-center '>
+    <div className='shadow-xl cursor-pointer transition duration-100  ease-linear transform hover:scale-95 hover:shadow-lg flex flex-col items-center py-4 '>
       <Link href={url}>
         <a>
           <Image
