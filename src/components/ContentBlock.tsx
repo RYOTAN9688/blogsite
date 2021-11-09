@@ -18,7 +18,7 @@ const SpanText = ({ text, id }) => {
         style={color !== 'default' ? { color } : {}}
       >
         {text.link ? (
-          <a href={text.link.url} className='underline'>
+          <a href={text.link.url} className='text-indigo-400 hover:underline'>
             {text.content}
           </a>
         ) : (
@@ -48,19 +48,19 @@ export const Heading = ({ text, level, id }) => {
   switch (level) {
     case 'heading_1':
       return (
-        <h1 id={id} className='font-bold text-3xl md:text-5xl tracking-tight my-2 text-black'>
+        <h1 id={id} className=' font-mono text-3xl md:text-5xl tracking-tight my-2 '>
           {text[0].text.content}
         </h1>
       );
     case 'heading_2':
       return (
-        <h2 id={id} className='font-bold text-2xl md:text-3xl tracking-tight my-2 text-black'>
+        <h2 id={id} className='font-mono text-2xl md:text-3xl tracking-tight my-2 '>
           {text[0].text.content}
         </h2>
       );
     case 'heading_3':
       return (
-        <h3 id={id} className='font-bold text-lg md:text-xl tracking-tight my-2 text-black'>
+        <h3 id={id} className='font-mono text-lg md:text-xl tracking-tight my-2 '>
           {text[0].text.content}
         </h3>
       );
