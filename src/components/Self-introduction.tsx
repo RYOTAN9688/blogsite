@@ -14,10 +14,10 @@ export const Self_introduction = () => {
         />
         <h1 className='sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900'>About</h1>
         <p className='leading-relaxed text-base  pl-2'>
-          1996年生まれ。石川生まれでずっと石川に住んでいます（地元愛💓）。
+          1996年生まれ。石川生まれでずっと石川に住んでいます。
           フロントエンドエンジニアを目指して勉強中です。
         </p>
-        <h2 className='title-font font-semibold text-2xl text-blue-500'>HOBBY</h2>
+        <h2 className='sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900'>HOBBY</h2>
         <ul>
           <li className='font-medium '>音楽を聴くこと🎸</li>
           <p>
