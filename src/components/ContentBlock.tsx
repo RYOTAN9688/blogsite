@@ -18,7 +18,7 @@ const SpanText = ({ text, id }) => {
         style={color !== 'default' ? { color } : {}}
       >
         {text.link ? (
-          <a href={text.link.url} className='underline'>
+          <a href={text.link.url} className='text-indigo-400 hover:underline'>
             {text.content}
           </a>
         ) : (

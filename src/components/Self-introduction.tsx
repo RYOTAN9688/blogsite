@@ -8,6 +8,7 @@ export const Self_introduction = () => {
           src='/profile.jpg'
           width={200}
           height={200}
+          loading={'eager'}
           alt='プロフィール画像'
           className='rounded-r-full rounded-t-full rounded-b-full'
         />
