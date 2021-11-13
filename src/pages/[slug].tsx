@@ -1,9 +1,10 @@
 import BlogLayout from '../layouts/BlogLayout';
 import { getNotionData, getPage, getBlocks } from '../../lib/getNotionData';
 import { Text, ListItem, Heading, ToDo, Toggle } from '../components/ContentBlock';
-import { GetStaticPropsContext } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import Image from 'next/image';
 import { PageHead } from '../components/PageHead';
+import { GetBlockResponse } from '@notionhq/client/build/src/api-endpoints';
 const databaseId = process.env.NOTION_DATABASE_ID;
 
 export default function Post({ page, blocks }) {
@@ -19,7 +20,7 @@ export default function Post({ page, blocks }) {
         type='artcle'
         url='https://portfolio-sigma-lime.vercel.app/blog'
       />
-      <BlogLayout data={page}>
+      <BlogLayout page={page}>
         <span className='text-sm text-gray-700'>
           {new Date(page.created_time).toLocaleString('en-US', {
             month: 'short',
@@ -28,11 +29,9 @@ export default function Post({ page, blocks }) {
           })}
         </span>
 
-        <h1 className='font-bold text-3xl md:text-5xl tracking-tight mb-5 text-black'>
-          {page.properties.Post.title[0].plain_text}
-        </h1>
+        <h1 className='font-bold text-3xl md:text-5xl tracking-tight mb-5 text-black'>{}</h1>
 
-        {blocks.map((block) => {
+        {blocks.map((block: GetBlockResponse) => {
           const { type, id } = block;
           const value = block[type];
           const { text } = value;
@@ -69,7 +68,14 @@ export default function Post({ page, blocks }) {
               const caption = value.caption.length ? value.caption[0].plain_text : '';
               return (
                 <figure key={id}>
-                  <Image alt={caption} src={imageSrc} />
+                  <Image
+                    alt={caption}
+                    src={imageSrc}
+                    width={420}
+                    height={360}
+                    quality={100}
+                    loading={'eager'}
+                  />
                   {caption && <figcaption className='mt-2'>{caption}</figcaption>}
                 </figure>
               );
@@ -85,28 +91,27 @@ export default function Post({ page, blocks }) {
   );
 }
 
-export const getStaticPaths = async () => {
-  const database = await getNotionData(databaseId);
+export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = await getNotionData(databaseId as string);
   return {
-    paths: database.map((page) => ({
+    paths: posts.map((post) => ({
       params: {
-        //@ts-ignore
-        slug: page.properties.Slug.rich_text[0].plain_text,
+        slug: post.slug,
+        id: post.id,
       },
     })),
-    fallback: false,
+    fallback: true,
   };
 };
 
-export const getStaticProps = async (context: GetStaticPropsContext) => {
+export const getStaticProps: GetStaticProps = async (context) => {
   const { slug } = context.params;
-  const database = await getNotionData(databaseId);
-  //@ts-ignore
-  const filter = database.filter((blog) => blog.properties.Slug.rich_text[0].plain_text === slug);
-  const page = await getPage(filter[0].id);
-  const blocks = await getBlocks(filter[0].id);
+  const posts = await getNotionData(databaseId as string);
+  const post = posts.find((post) => post.slug === slug);
+  const page = await getPage(post.id);
+  const blocks = await getBlocks(post.id);
 
-  const childrenBlocks = await Promise.all(
+  const childBlocks = await Promise.all(
     blocks
       .filter((block) => block.has_children)
       .map(async (block) => {
@@ -118,8 +123,8 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
   );
 
   const blocksWithChildren = blocks.map((block) => {
-    if (block.has_children) {
-      block[block.type].children = childrenBlocks.find((x) => x.id === block.id).children;
+    if (block.has_children && !block[block.type].children) {
+      block[block.type]['children'] = childBlocks.find((x) => x.id === block.id)?.children;
     }
     return block;
   });
@@ -129,5 +134,6 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
       page,
       blocks: blocksWithChildren,
     },
+    revalidate: 1,
   };
 };
