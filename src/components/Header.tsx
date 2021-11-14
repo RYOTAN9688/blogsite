@@ -21,20 +21,9 @@ export const Header = () => {
                 </svg>
               </a>
             </Link>
-            <div className='flex items-center space-x-14'>
-              <span className='ml-3 text-5xl text-gray-900 mb-2 md:mb-0 title-font font-medium  '>
-                PortFolio
-              </span>
-              <nav>
-                <Link href='/' locale='ja'>
-                  <a className='text-2xl text-gray-900 hover:text-blue-500 mr-2 font-bold'>Ja</a>
-                </Link>
-                /
-                <Link href='/en' locale='en'>
-                  <a className='text-2xl text-gray-900 hover:text-blue-500 ml-2 font-bold'>En</a>
-                </Link>
-              </nav>
-            </div>
+            <span className='ml-3 text-5xl text-gray-900 mb-2 md:mb-0 title-font font-medium  '>
+              PortFolio
+            </span>
           </div>
           <div>
             <button className='px-5 md:hidden' onClick={memuFunction}>
@@ -60,17 +49,34 @@ export const Header = () => {
             </button>
           </div>
         </div>
-        <nav className={`${isOpen ? 'flex flex-col' : 'hidden md:flex justify-center'}`}>
-          <Link href='/'>
-            <a className='mr-5 text-gray-900 hover:text-blue-500  hover:underline text-xl py-2 px-8'>
-              Home
-            </a>
-          </Link>
-          <Link href='/blog'>
-            <a className='mr-5 text-gray-900  hover:text-blue-500 hover:underline text-xl py-2 px-8'>
-              Blog
-            </a>
-          </Link>
+        <nav>
+          <div
+            className={`${
+              isOpen ? 'flex justify-between items-center mr-3' : 'hidden md:flex justify-between  '
+            }`}
+          >
+            <div>
+              <Link href='/'>
+                <a className='mr-5 text-gray-900 hover:text-blue-500  hover:underline text-xl py-2 px-8'>
+                  Home
+                </a>
+              </Link>
+              <Link href='/blog'>
+                <a className='mr-5 text-gray-900  hover:text-blue-500 hover:underline text-xl py-2 px-8'>
+                  Blog
+                </a>
+              </Link>
+            </div>
+            <nav className=' md:pt-1'>
+              <Link href='/' locale='ja'>
+                <a className='text-xl text-gray-900 hover:text-blue-500  font-bold'>Ja</a>
+              </Link>
+              /
+              <Link href='/en' locale='en'>
+                <a className='text-xxl text-gray-900 hover:text-blue-500  font-bold'>En</a>
+              </Link>
+            </nav>
+          </div>
         </nav>
       </header>
     </>
