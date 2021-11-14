@@ -21,9 +21,20 @@ export const Header = () => {
                 </svg>
               </a>
             </Link>
-            <span className='ml-3 text-5xl text-gray-900 mb-2 md:mb-0 title-font font-medium  '>
-              PortFolio
-            </span>
+            <div className='flex items-center space-x-14'>
+              <span className='ml-3 text-5xl text-gray-900 mb-2 md:mb-0 title-font font-medium  '>
+                PortFolio
+              </span>
+              <nav>
+                <Link href='/' locale='ja'>
+                  <a className='text-2xl text-gray-900 hover:text-blue-500 mr-2 font-bold'>Ja</a>
+                </Link>
+                /
+                <Link href='/en' locale='en'>
+                  <a className='text-2xl text-gray-900 hover:text-blue-500 ml-2 font-bold'>En</a>
+                </Link>
+              </nav>
+            </div>
           </div>
           <div>
             <button className='px-5 md:hidden' onClick={memuFunction}>
