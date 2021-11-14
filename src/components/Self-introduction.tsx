@@ -14,10 +14,7 @@ export const Self_introduction = () => {
           className='rounded-r-full rounded-t-full rounded-b-full'
         />
         <h1 className='sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900'>About</h1>
-        <p className='leading-relaxed text-base  pl-2'>
-          1996年生まれ。石川生まれでずっと石川に住んでいます。
-          フロントエンドエンジニアを目指して勉強中です。
-        </p>
+        <p className='leading-relaxed text-base  pl-2'>{t.About}</p>
         <h2 className='sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900'>HOBBY</h2>
         <ul>
           <li className='font-medium '>{t.HobbyTitle1}</li>
