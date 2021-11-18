@@ -12,7 +12,7 @@ export const PageHead: VFC<MetaData> = ({ title, description, type, url }) => {
   return (
     <Head>
       <title>{title}</title>
-      <meta name='robots' content='follow, index' />
+      <meta name='robots' content='noindex' />
       <meta name='viewport' content='width=device-width' />
       <meta property='og:title' content={title} name='title' />
       <meta property='og:description' content={description} name='description' />

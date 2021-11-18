@@ -12,13 +12,12 @@ export const Blogitem: React.VFC<Props> = ({ url, title, description, image }) =
   return (
     <div className='shadow-xl cursor-pointer transition duration-100  ease-linear transform hover:scale-95 hover:shadow-lg flex flex-col items-center py-4 '>
       <Link href={url}>
-        <a>
+        <a aria-label='ブログ記事に飛ぶ'>
           <Image
             src={image}
             width={200}
             height={200}
             alt=''
-            loading={'eager'}
             className='w-full h-full object-cover inset-0   '
           />
         </a>

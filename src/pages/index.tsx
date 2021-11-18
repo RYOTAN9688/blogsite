@@ -9,7 +9,7 @@ export default function Home() {
     <>
       <PageHead
         title='TopPage'
-        description='Next.jsを使用して作成したportfolioサイトです'
+        description='爆速で動くportfolioサイトです'
         type='website'
         url='https://portfolio-sigma-lime.vercel.app/'
       />
