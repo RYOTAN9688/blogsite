@@ -18,9 +18,9 @@ export const Self_introduction = () => {
         <h2 className='sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900'>HOBBY</h2>
         <ul>
           <li className='font-medium '>{t.HobbyTitle1}</li>
-          <p>{t.HobbyContent1}</p>
+          <li>{t.HobbyContent1}</li>
           <li className='font-medium  pt-3'>{t.HobbyTitle2}</li>
-          <p>{t.HobbyContent2}</p>
+          <li>{t.HobbyContent2}</li>
         </ul>
       </div>
     </>
