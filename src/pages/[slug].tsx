@@ -68,7 +68,15 @@ export default function Post({ page, blocks }) {
               const caption = value.caption.length ? value.caption[0].plain_text : '';
               return (
                 <figure key={id}>
-                  <Image alt={caption} src={imageSrc} width={420} height={360} quality={100} />
+                  <Image
+                    alt={caption}
+                    src={imageSrc}
+                    width={420}
+                    height={360}
+                    quality={100}
+                    priority
+                    loading='eager'
+                  />
                   {caption && <figcaption className='mt-2'>{caption}</figcaption>}
                 </figure>
               );
