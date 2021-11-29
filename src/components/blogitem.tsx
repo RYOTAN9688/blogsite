@@ -15,10 +15,12 @@ export const Blogitem: React.VFC<Props> = ({ url, title, description, image }) =
         <a aria-label='ブログ記事に飛ぶ'>
           <Image
             src={image}
+            loading='eager'
+            priority
             width={200}
             height={200}
-            alt=''
-            className='w-full h-full object-cover inset-0   '
+            alt='blog記事'
+            className='w-full h-full object-cover inset-0 '
           />
         </a>
       </Link>
