@@ -19,6 +19,21 @@ module.exports = {
       '2xl': '1536px',
       // => @media (min-width: 1536px) { ... }
     },
+    extend: {
+      animation: {
+        'color-change-2x': 'color-change-2x 2s linear  infinite alternate both',
+      },
+      keyframes: {
+        'color-change-2x': {
+          '0%': {
+            background: '#19dcea',
+          },
+          to: {
+            background: '#b22cff',
+          },
+        },
+      },
+    },
   },
   variants: {
     extend: {},
