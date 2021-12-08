@@ -1,7 +1,8 @@
+import { VFC } from 'react';
 import { Self_introduction } from './Self-introduction';
 import { Skills } from './Skill';
 
-export default function Profile() {
+export const Profile: VFC = () => {
   return (
     <>
       <div>
@@ -16,4 +17,4 @@ export default function Profile() {
       </div>
     </>
   );
-}
+};

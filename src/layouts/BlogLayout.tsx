@@ -1,6 +1,13 @@
+import { VFC } from 'react';
 import Container from '../components/Container';
 
-export default function BlogLayout({ children, page }) {
+interface Props {
+  children: Array<string>;
+}
+
+export const BlogLayout: VFC<Props> = ({ children, page }) => {
+  console.log(children, page);
+
   return (
     <Container
       title={page.properties.Post}
@@ -13,4 +20,4 @@ export default function BlogLayout({ children, page }) {
       </article>
     </Container>
   );
-}
+};

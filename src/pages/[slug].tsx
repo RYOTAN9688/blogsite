@@ -1,13 +1,24 @@
-import BlogLayout from '../layouts/BlogLayout';
-import { getNotionData, getPage, getBlocks } from '../../lib/getNotionData';
-import { Text, ListItem, Heading, ToDo, Toggle } from '../components/ContentBlock';
-import { GetStaticPaths, GetStaticProps } from 'next';
+import {
+  GetStaticPaths,
+  GetStaticProps,
+  InferGetStaticPropsType,
+  GetStaticPropsContext,
+} from 'next';
 import Image from 'next/image';
-import { PageHead } from '../components/PageHead';
 import { GetBlockResponse } from '@notionhq/client/build/src/api-endpoints';
+
+import { BlogLayout } from '../layouts/BlogLayout';
+import { getNotionData, getPage, getBlocks } from '../../lib/getNotionData';
+
+import { Text, ListItem, Heading, ToDo, Toggle } from '../components/ContentBlock';
+import { PageHead } from '../components/PageHead';
+import { ParsedUrlQuery } from 'querystring';
+
 const databaseId = process.env.NOTION_DATABASE_ID;
 
-export default function Post({ page, blocks }) {
+type Props = InferGetStaticPropsType<typeof getStaticProps>;
+
+export default function Post({ page, blocks }: Props) {
   if (!page || !blocks) {
     return <div />;
   }
@@ -31,7 +42,7 @@ export default function Post({ page, blocks }) {
 
         <h1 className='font-bold text-3xl md:text-5xl tracking-tight mb-5 text-black'>{}</h1>
 
-        {blocks.map((block: GetBlockResponse) => {
+        {blocks.map((block) => {
           const { type, id } = block;
           const value = block[type];
           const { text } = value;
@@ -97,8 +108,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const { slug } = context.params;
+interface IParams extends ParsedUrlQuery {
+  slug: string;
+}
+
+export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
+  const { slug } = context.params as IParams;
   const posts = await getNotionData(databaseId as string);
   const post = posts.find((post) => post.slug === slug);
   const page = await getPage(post.id);
@@ -116,8 +131,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   );
 
   const blocksWithChildren = blocks.map((block) => {
-    if (block.has_children && !block[block.type].children) {
-      block[block.type]['children'] = childBlocks.find((x) => x.id === block.id)?.children;
+    if (block.has_children) {
+      block.children = childBlocks.find((x) => x.id === block.id)?.children;
     }
     return block;
   });
@@ -126,6 +141,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       page,
       blocks: blocksWithChildren,
+      slug,
     },
     revalidate: 1,
   };

@@ -1,3 +1,5 @@
+import { ReactChild, VFC } from 'react';
+
 const SpanText = ({ text, id }) => {
   if (!text) return null;
   return text.map((value, i) => {
@@ -79,7 +81,12 @@ export const ToDo = ({ id, value, text }) => {
   );
 };
 
-export const Toggle = ({ text, children }) => {
+interface ToggleProps {
+  text: string;
+  children?: ReactChild;
+}
+
+export const Toggle: VFC<ToggleProps> = ({ text, children }) => {
   return (
     <details>
       <summary className='cursor-pointer'>{text[0].text.content}</summary>
