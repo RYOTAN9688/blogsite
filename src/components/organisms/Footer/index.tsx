@@ -1,9 +1,10 @@
 import Link from 'next/link';
-import { OtherSites } from './OtherSites';
+import { VFC } from 'react';
+import { OtherSites } from '../../OtherSites';
 
 const othersite = OtherSites;
 
-export const Footer = () => {
+export const Footer: VFC = () => {
   return (
     <>
       <footer className='text-gray-600 body-font'>
