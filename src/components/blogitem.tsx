@@ -6,9 +6,10 @@ interface Props {
   title: string;
   description: string;
   image: string;
+  date: string;
 }
 
-export const Blogitem: React.VFC<Props> = ({ url, title, description, image }) => {
+export const Blogitem: React.VFC<Props> = ({ url, title, description, image, date }) => {
   return (
     <div className='shadow-xl cursor-pointer transition duration-100  ease-linear transform hover:scale-95 hover:shadow-lg flex flex-col items-center py-4 '>
       <Link href={url}>
@@ -29,6 +30,7 @@ export const Blogitem: React.VFC<Props> = ({ url, title, description, image }) =
           </Link>
         </h2>
         <p className='pb-4'> {description}</p>
+        <p>{date}</p>
       </div>
     </div>
   );

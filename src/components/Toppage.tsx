@@ -24,6 +24,7 @@ export const TopPage: React.VFC<{ posts: PostProps[] }> = ({ posts }) => {
                   description={post.description}
                   image={post.thumbnail}
                   url={`/${post.slug}`}
+                  date={post.date}
                 />
               </div>
             );

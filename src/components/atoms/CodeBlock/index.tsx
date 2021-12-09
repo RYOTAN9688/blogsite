@@ -21,7 +21,7 @@ export const CodeBlock: VFC<CodeBlockProps> = ({ text, lang }) => {
     (hljs.initHighlighting as any).called = false;
   }, []);
   return (
-    <pre className='mb-6 md:mb-8 text-sm text-white bg-black p-4 overflow-x-auto rounded-md bg-opacity-80'>
+    <pre className=' container mb-6 md:mb-8 text-sm text-white bg-black p-4 overflow-x-auto rounded-md bg-opacity-80'>
       <code className={lang}>
         <SpanText text={text} />
       </code>

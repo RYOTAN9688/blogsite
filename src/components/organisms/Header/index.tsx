@@ -13,8 +13,8 @@ export const Header: VFC = () => {
 
   return (
     <>
-      <header className='container md:container text-gray-300 py-2'>
-        <div className='relative flex items-center justify-between md:flex text-gray-300 py-2  border-b-2 '>
+      <header className='container md:container border-b-2 text-gray-300 py-2'>
+        <div className='relative flex items-center justify-between md:flex text-gray-300 py-2  '>
           <Title title='MyPortfolio' />
           <button
             aria-label='ナビゲーションメニュー'

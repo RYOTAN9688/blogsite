@@ -1,5 +1,5 @@
-import { GetStaticPaths, InferGetStaticPropsType, GetStaticPropsContext } from 'next';
 import Image from 'next/image';
+import { GetStaticPaths, InferGetStaticPropsType, GetStaticPropsContext } from 'next';
 
 import { BlogLayout } from '../layouts/BlogLayout';
 import { getNotionData, getPage, getBlocks } from '../../lib/getNotionData';
@@ -36,7 +36,6 @@ export default function Post({ page, blocks }: Props) {
             year: 'numeric',
           })}
         </span>
-
         <h1 className='font-bold text-3xl md:text-5xl tracking-tight mb-5 text-black'>{}</h1>
 
         {blocks.map((block) => {

@@ -6,6 +6,7 @@ export type PostProps = {
   title: string;
   description: string;
   id: string;
+  date: string;
 };
 
 export type richText = {
