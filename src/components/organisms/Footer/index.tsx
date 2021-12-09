@@ -18,15 +18,7 @@ export const Footer: VFC = () => {
             </a>
           </Link>
           <p className='text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4'>
-            © 2021 Copyright:
-            <a
-              href='https://twitter.com/knyttneve'
-              className='text-gray-600 ml-1'
-              rel='noopener noreferrer'
-              target='_blank'
-            >
-              @Ryo
-            </a>
+            © 2021 Copyright: Ryo
           </p>
           <div className='inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start'>
             {othersite.map(({ Comp, link, alt }) => {

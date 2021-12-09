@@ -1,14 +1,18 @@
-import { Header } from './organisms/Header';
-import { Footer } from './organisms/Footer';
 import { ReactChild } from 'react';
+
+import { Header } from '../components/organisms/Header';
+import { Footer } from '../components/organisms/Footer';
 
 interface Props {
   children?: ReactChild;
   title?: string;
   description?: string;
+  classname?: string;
+  date?: Date;
+  type?: string;
 }
 
-export default function Container(props: Props) {
+const Container = (props: Props) => {
   const { children } = props;
 
   return (
@@ -20,4 +24,6 @@ export default function Container(props: Props) {
       </main>
     </>
   );
-}
+};
+
+export default Container;

@@ -1,4 +1,4 @@
-import Container from '../components/Container';
+import Container from '../layouts/Container';
 import { PageHead } from '../components/PageHead';
 import { Profile } from '../components/Profile';
 

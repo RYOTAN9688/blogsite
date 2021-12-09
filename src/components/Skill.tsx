@@ -1,7 +1,7 @@
 import { VFC } from 'react';
 import Image from 'next/image';
 
-import { otherSkilldata, skilldata } from './Skilldata';
+import { otherSkilldata, skilldata } from './data/Skilldata';
 
 const skills = skilldata;
 

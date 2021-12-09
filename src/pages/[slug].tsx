@@ -5,7 +5,6 @@ import {
   GetStaticPropsContext,
 } from 'next';
 import Image from 'next/image';
-import { GetBlockResponse } from '@notionhq/client/build/src/api-endpoints';
 
 import { BlogLayout } from '../layouts/BlogLayout';
 import { getNotionData, getPage, getBlocks } from '../../lib/getNotionData';

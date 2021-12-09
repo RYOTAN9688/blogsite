@@ -9,19 +9,19 @@ interface Props {
 export const Modal: VFC<Props> = ({}) => {
   return (
     <div>
-      <div className=' bg-white fixed w-3/6  inset-0 z-50 overflow-hidden md:relative md:w-full md:h-full'>
-        <div className='flex  py-8 justify-center flex-col md:flex'>
+      <div className='bg-white fixed w-3/6  inset-0 z-50 overflow-hidden md:relative md:w-full md:h-full '>
+        <div className='flex py-8 justify-center  items-center flex-col md:flex md:py-0'>
           <Link href='/'>
-            <a className='text-gray-900 mr-5text-gray-900 hover:text-blue-500  hover:underline text-xl py-2 px-8 font-bold'>
+            <a className='text-gray-900 mr-5text-gray-900 hover:text-blue-500  hover:underline text-xl py-2  font-bold md:py-0 '>
               Home
             </a>
           </Link>
           <Link href='/blog'>
-            <a className='mr-5 text-gray-900  hover:text-blue-500 hover:underline text-xl py-2 px-8 font-bold'>
+            <a className=' text-gray-900  hover:text-blue-500 hover:underline text-xl py-2  font-bold'>
               Blog
             </a>
           </Link>
-          <nav className='py-2 px-8'>
+          <nav className='py-2'>
             <Link href='/' locale='ja'>
               <a className='text-xl text-gray-900 hover:text-blue-500  font-bold'>Ja</a>
             </Link>

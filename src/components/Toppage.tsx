@@ -1,9 +1,9 @@
-import { Post } from '../../types';
+import { PostProps } from '../../types';
 import { useLocale } from '../hooks/useLacale';
 import { Blogitem } from './blogitem';
-import Container from './Container';
+import Container from '../layouts/Container';
 
-export const TopPage: React.VFC<{ posts: Post[] }> = ({ posts }) => {
+export const TopPage: React.VFC<{ posts: PostProps[] }> = ({ posts }) => {
   const { t } = useLocale();
   return (
     <Container>

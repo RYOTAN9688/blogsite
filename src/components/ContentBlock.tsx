@@ -1,7 +1,10 @@
-import { ReactChild, VFC } from 'react';
+import { VFC } from 'react';
+import { richText } from '../../types';
 
-const SpanText = ({ text, id }) => {
-  if (!text) return null;
+const SpanText = ({ text }: { text: richText[] }) => {
+  if (!text) {
+    return null;
+  }
   return text.map((value, i) => {
     const {
       annotations: { bold, code, color, italic, strikethrough, underline },
@@ -9,7 +12,7 @@ const SpanText = ({ text, id }) => {
     } = value;
     return (
       <span
-        key={id + i}
+        key={i + i}
         className={[
           bold ? 'font-bold' : '',
           code ? 'bg-gray-100 p-1 font-mono text-sm rounded-md' : '',
@@ -31,14 +34,14 @@ const SpanText = ({ text, id }) => {
   });
 };
 
-export const Text = ({ text, id }) => {
+export const Text = ({ text, id }: richText) => {
   return (
     <p className='mb-4 text-gray-700'>
       <SpanText text={text} id={id} />
     </p>
   );
 };
-export const ListItem = ({ text, id }) => {
+export const ListItem = ({ text, id }: richText) => {
   return (
     <li className='text-gray-700'>
       <SpanText text={text} id={id} />
@@ -46,7 +49,13 @@ export const ListItem = ({ text, id }) => {
   );
 };
 
-export const Heading = ({ text, level, id }) => {
+interface Props {
+  text: any;
+  level: string;
+  id: string;
+}
+
+export const Heading = ({ text, level, id }: Props) => {
   switch (level) {
     case 'heading_1':
       return (
@@ -71,7 +80,7 @@ export const Heading = ({ text, level, id }) => {
   }
 };
 
-export const ToDo = ({ id, value, text }) => {
+export const ToDo = ({ id, value, text }: Props) => {
   return (
     <div>
       <label htmlFor={id}>
@@ -81,12 +90,7 @@ export const ToDo = ({ id, value, text }) => {
   );
 };
 
-interface ToggleProps {
-  text: string;
-  children?: ReactChild;
-}
-
-export const Toggle: VFC<ToggleProps> = ({ text, children }) => {
+export const Toggle: VFC = ({ text, children }) => {
   return (
     <details>
       <summary className='cursor-pointer'>{text[0].text.content}</summary>
