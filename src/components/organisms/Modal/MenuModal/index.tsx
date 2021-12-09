@@ -3,14 +3,20 @@ import Link from 'next/link';
 
 interface Props {
   isOpen?: boolean;
-  setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   onChange?: React.ChangeEvent<HTMLInputElement>;
 }
-export const Modal: VFC<Props> = ({}) => {
+export const Modal: VFC<Props> = ({ setIsOpen }) => {
+  const closeModal = () => {
+    setIsOpen(false);
+  };
   return (
     <div>
-      <div className='bg-white fixed w-3/6  inset-0 z-50 overflow-hidden md:relative md:w-full md:h-full '>
-        <div className='flex py-8 justify-center  items-center flex-col md:flex md:py-0'>
+      <div
+        onClick={closeModal}
+        className='bg-white fixed w-3/6  inset-0 z-50 overflow-hidden md:relative md:w-full md:h-full '
+      >
+        <div className='flex py-8 justify-center flex-col items-center  md:flex md:py-0'>
           <Link href='/'>
             <a className='text-gray-900 mr-5text-gray-900 hover:text-blue-500  hover:underline text-xl py-2  font-bold md:py-0 '>
               Home

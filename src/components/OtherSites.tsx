@@ -1,7 +1,8 @@
-import GitHub from '../svgs/GitHub';
-import Twitter from '../svgs/Twitter';
-import GitLab from '../svgs/GitLab';
+import GitHub from './atoms/icon/GitHub';
+import Twitter from './atoms/icon/Twitter';
+
 import { VFC } from 'react';
+import GitLab from './atoms/icon/GitLab';
 
 export const OtherSites = [
   {

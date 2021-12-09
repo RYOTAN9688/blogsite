@@ -1,4 +1,5 @@
 import { useState, VFC } from 'react';
+import { Title } from '../../atoms/Title';
 
 import { Modal } from '../Modal/MenuModal';
 
@@ -12,12 +13,9 @@ export const Header: VFC = () => {
 
   return (
     <>
-      <header className='container  text-gray-300 py-2'>
-        <div className=' relative flex justify-between md:flex text-gray-300 py-2  '>
-          <div className=' items-center '>
-            <h1 className='ml-3 text-3xl text-gray-900 md:mb-0 title-font '>PortFolio</h1>;
-            <p className='text-gray-900'>技術ブログ兼ポートフォリオ</p>
-          </div>
+      <header className='container md:container text-gray-300 py-2'>
+        <div className='relative flex items-center justify-between md:flex text-gray-300 py-2  border-b-2 '>
+          <Title title='MyPortfolio' />
           <button
             aria-label='ナビゲーションメニュー'
             className='px-5 bg-transparent md:hidden'
@@ -43,11 +41,9 @@ export const Header: VFC = () => {
               }`}
             />
           </button>
-          <nav>
-            <div className={`${isOpen ? 'absolute ' : 'hidden '}`}>
-              <Modal />
-            </div>
-          </nav>
+          <div className={`${isOpen ? 'absolute ' : 'hidden md:flex'}`}>
+            <Modal setIsOpen={setIsOpen} />
+          </div>
         </div>
       </header>
     </>

@@ -1,9 +1,4 @@
-import {
-  GetStaticPaths,
-  GetStaticProps,
-  InferGetStaticPropsType,
-  GetStaticPropsContext,
-} from 'next';
+import { GetStaticPaths, InferGetStaticPropsType, GetStaticPropsContext } from 'next';
 import Image from 'next/image';
 
 import { BlogLayout } from '../layouts/BlogLayout';
@@ -12,12 +7,15 @@ import { getNotionData, getPage, getBlocks } from '../../lib/getNotionData';
 import { Text, ListItem, Heading, ToDo, Toggle } from '../components/ContentBlock';
 import { PageHead } from '../components/PageHead';
 import { ParsedUrlQuery } from 'querystring';
+import { CodeBlock } from '../components/atoms/CodeBlock';
 
 const databaseId = process.env.NOTION_DATABASE_ID;
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 export default function Post({ page, blocks }: Props) {
+  console.log(blocks);
+
   if (!page || !blocks) {
     return <div />;
   }
@@ -32,7 +30,7 @@ export default function Post({ page, blocks }: Props) {
       />
       <BlogLayout page={page}>
         <span className='text-sm text-gray-700'>
-          {new Date(page.created_time).toLocaleString('en-US', {
+          {new Date(page.created_time).toLocaleString('ja-JP-u-ca-japanese', {
             month: 'short',
             day: '2-digit',
             year: 'numeric',
@@ -50,6 +48,8 @@ export default function Post({ page, blocks }: Props) {
             case 'paragraph':
               return <Text text={value.text} id={id} key={id} />;
 
+            case 'code':
+              return <CodeBlock text={block.code.text} lang={block.code.language} />;
             case 'heading_1':
               return <Heading text={text} id={id} level={type} key={id} />;
 
@@ -83,6 +83,14 @@ export default function Post({ page, blocks }: Props) {
                 </figure>
               );
 
+            case 'bookmark':
+              return (
+                <iframe
+                  src={`/embed/?url=${block.bookmark.url}`}
+                  className='w-full block border-0 h-36'
+                ></iframe>
+              );
+
             default:
               return `Unsupported block (${
                 type === 'unsupported' ? 'unsupported by Notion API' : type
@@ -111,10 +119,13 @@ interface IParams extends ParsedUrlQuery {
   slug: string;
 }
 
-export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
+export const getStaticProps = async (context: GetStaticPropsContext) => {
   const { slug } = context.params as IParams;
   const posts = await getNotionData(databaseId as string);
   const post = posts.find((post) => post.slug === slug);
+  if (!post) {
+    return null;
+  }
   const page = await getPage(post.id);
   const blocks = await getBlocks(post.id);
 

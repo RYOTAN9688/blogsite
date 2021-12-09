@@ -1,6 +1,10 @@
 import { Client } from '@notionhq/client';
-import type { ListBlockChildrenResponse } from '@notionhq/client/build/src/api-endpoints.d';
-import { Post } from '../types';
+import type {
+  ListBlockChildrenResponse,
+  QueryDatabaseParameters,
+} from '@notionhq/client/build/src/api-endpoints.d';
+
+import { PostProps } from '../types';
 
 export type blockWithChildren = ListBlockChildrenResponse['results'][number] & {
   children?: blockWithChildren[];
@@ -10,14 +14,18 @@ const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 });
 
-export const getNotionData = async (databaseId: string) => {
+export const getNotionData = async (
+  databaseId: string,
+  args: Omit<QueryDatabaseParameters, 'database_id'> = {},
+) => {
   const response = await notion.databases.query({
     database_id: databaseId,
+    ...args,
   });
   const { results } = response;
   const posts = results.map((result) => {
     const d = result.properties;
-    const item: Post = {
+    const item: PostProps = {
       thumbnail: '',
       authors: [],
       slug: '',
@@ -36,6 +44,7 @@ export const getNotionData = async (databaseId: string) => {
         if (property.files[0].type === 'external') {
           item[key.toLowerCase()] = property.files[0].name;
         } else {
+          // @ts-ignore
           item[key.toLowerCase()] = property.files[0].file?.url;
         }
       } else if (property.type === 'title') {
