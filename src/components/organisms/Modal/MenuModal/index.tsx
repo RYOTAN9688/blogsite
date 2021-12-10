@@ -11,12 +11,12 @@ export const Modal: VFC<Props> = ({ setIsOpen }) => {
     setIsOpen(false);
   };
   return (
-    <div>
+    <>
       <div
         onClick={closeModal}
-        className='bg-white fixed w-3/6  inset-0 z-50 overflow-hidden md:relative md:w-full md:h-full '
+        className='bg-white fixed w-3/6  inset-0 z-50 overflow-hidden md:relative md:w-full md:h-full'
       >
-        <div className='flex py-8 justify-center flex-col items-center  md:flex md:py-0'>
+        <div className='flex flex-col py-8 justify-centeritems-center   md:py-0'>
           <Link href='/'>
             <a className='text-gray-900 mr-5text-gray-900 hover:text-blue-500  hover:underline text-xl py-2  font-bold md:py-0 '>
               Home
@@ -38,6 +38,6 @@ export const Modal: VFC<Props> = ({ setIsOpen }) => {
           </nav>
         </div>
       </div>
-    </div>
+    </>
   );
 };

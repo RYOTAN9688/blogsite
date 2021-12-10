@@ -21,6 +21,7 @@ interface Props {
   text: any;
   level: string;
   id: string;
+  value: any;
 }
 
 export const Heading = ({ text, level, id }: Props) => {

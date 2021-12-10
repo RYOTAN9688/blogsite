@@ -5,13 +5,14 @@ import hljs from 'highlight.js/lib/core';
 import xml from 'highlight.js/lib/languages/xml';
 import css from 'highlight.js/lib/languages/css';
 import js from 'highlight.js/lib/languages/javascript';
+import { richText } from '../../../../types';
 
 hljs.registerLanguage('xml', xml);
 hljs.registerLanguage('css', css);
 hljs.registerLanguage('js', js);
 
 interface CodeBlockProps {
-  text: string;
+  text: richText[];
   lang: string;
 }
 
