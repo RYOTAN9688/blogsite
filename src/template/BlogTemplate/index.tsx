@@ -1,17 +1,22 @@
-import { PostProps } from '../../types';
-import { useLocale } from '../hooks/useLacale';
-import { Blogitem } from './blogitem';
-import Container from '../layouts/Container';
+import { VFC } from 'react';
 
-export const TopPage: React.VFC<{ posts: PostProps[] }> = ({ posts }) => {
+import { Blogitem } from '../../components/blogitem';
+import { useLocale } from '../../hooks/useLacale';
+import Container from '../../layouts/Container';
+import { PostProps } from '../../types';
+
+export const BlogTemplate: VFC<{ BlogTitle: string; posts: PostProps[] }> = ({
+  BlogTitle,
+  posts,
+}) => {
   const { t } = useLocale();
   return (
     <Container>
       <div className='max-w-2xl mx-auto mb-16 '>
         <div className='mb-16'>
-          <h1 className='font-bold text-3xl md:text-center w-full md:text-5xl tracking-tight mb-2 text-black mx-auto max-w-xl'>
-            My Blog
-          </h1>
+          <title className='font-bold text-3xl md:text-center w-full md:text-5xl tracking-tight mb-2 text-black mx-auto max-w-xl'>
+            {BlogTitle}
+          </title>
           <p className='text-gray-700  pt-4 md:text-center max-w-xl mx-auto'>{t.BlogContent}</p>
         </div>
 

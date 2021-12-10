@@ -1,12 +1,8 @@
-import { InferGetStaticPropsType } from 'next';
 import { VFC } from 'react';
 import Container from './Container';
-import { getStaticProps } from '../pages/[slug]';
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>;
-
-export const BlogLayout: VFC<Props> = ({ children, page }) => {
-  console.log(children, page);
+export const BlogLayout: VFC = ({ children, page }) => {
+  console.log(children, typeof page);
 
   return (
     <Container

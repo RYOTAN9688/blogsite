@@ -6,7 +6,7 @@ interface Props {
   title: string;
   description: string;
   image: string;
-  date: string;
+  date: Date;
 }
 
 export const Blogitem: React.VFC<Props> = ({ url, title, description, image, date }) => {

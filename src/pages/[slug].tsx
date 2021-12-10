@@ -1,25 +1,18 @@
-import Image from 'next/image';
 import { GetStaticPaths, InferGetStaticPropsType, GetStaticPropsContext } from 'next';
+import { ParsedUrlQuery } from 'querystring';
 
 import { BlogLayout } from '../layouts/BlogLayout';
 import { getNotionData, getPage, getBlocks } from '../../lib/getNotionData';
 
-import { Text, ListItem, Heading, ToDo, Toggle } from '../components/ContentBlock';
 import { PageHead } from '../components/PageHead';
-import { ParsedUrlQuery } from 'querystring';
-import { CodeBlock } from '../components/atoms/CodeBlock';
+import { CodeBlock } from '../components/notion/codeBlock';
+import { Fragment } from 'react';
 
 const databaseId = process.env.NOTION_DATABASE_ID;
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
-export default function Post({ page, blocks }: Props) {
-  console.log(blocks);
-
-  if (!page || !blocks) {
-    return <div />;
-  }
-
+export default function Post({ slug, page, blocks }: Props) {
   return (
     <>
       <PageHead
@@ -28,7 +21,7 @@ export default function Post({ page, blocks }: Props) {
         type='artcle'
         url='https://portfolio-sigma-lime.vercel.app/blog'
       />
-      <BlogLayout page={page}>
+      <BlogLayout>
         <span className='text-sm text-gray-700'>
           {new Date(page.created_time).toLocaleString('ja-JP-u-ca-japanese', {
             month: 'short',
@@ -36,65 +29,9 @@ export default function Post({ page, blocks }: Props) {
             year: 'numeric',
           })}
         </span>
-        <h1 className='font-bold text-3xl md:text-5xl tracking-tight mb-5 text-black'>{}</h1>
-
+        <h1 className='font-bold text-3xl md:text-5xl tracking-tight mb-5 text-black'>{slug}</h1>
         {blocks.map((block) => {
-          const { type, id } = block;
-          const value = block[type];
-          const { text } = value;
-
-          switch (type) {
-            case 'paragraph':
-              return <Text text={value.text} id={id} key={id} />;
-
-            case 'code':
-              return <CodeBlock text={block.code.text} lang={block.code.language} />;
-            case 'heading_1':
-              return <Heading text={text} id={id} level={type} key={id} />;
-
-            case 'heading_2':
-              return <Heading text={text} id={id} level={type} key={id} />;
-
-            case 'heading_3':
-              return <Heading text={text} id={id} level={type} key={id} />;
-
-            case 'bulleted_list_item':
-            case 'numbered_list_item':
-              return <ListItem key={id} text={value.text} id={id} />;
-
-            case 'to_do':
-              return <ToDo id={id} key={id} value={value} text={value.text} />;
-
-            case 'toggle':
-              return (
-                <Toggle key={id} text={value.text}>
-                  children={value.children}
-                </Toggle>
-              );
-
-            case 'image':
-              const imageSrc = value.type === 'external' ? value.external.url : value.file.url;
-              const caption = value.caption.length ? value.caption[0].plain_text : '';
-              return (
-                <figure key={id}>
-                  <Image alt={caption} src={imageSrc} width={420} height={360} quality={100} />
-                  {caption && <figcaption className='mt-2'>{caption}</figcaption>}
-                </figure>
-              );
-
-            case 'bookmark':
-              return (
-                <iframe
-                  src={`/embed/?url=${block.bookmark.url}`}
-                  className='w-full block border-0 h-36'
-                ></iframe>
-              );
-
-            default:
-              return `Unsupported block (${
-                type === 'unsupported' ? 'unsupported by Notion API' : type
-              })`;
-          }
+          <Fragment key={block.id}>{CodeBlock(block)}</Fragment>;
         })}
       </BlogLayout>
     </>
@@ -110,7 +47,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
         id: post.id,
       },
     })),
-    fallback: true,
+    fallback: 'blocking',
   };
 };
 
@@ -152,6 +89,6 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
       blocks: blocksWithChildren,
       slug,
     },
-    revalidate: 1,
+    revalidate: 3600,
   };
 };

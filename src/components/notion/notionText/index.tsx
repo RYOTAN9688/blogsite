@@ -1,17 +1,18 @@
-import { richText } from '../../../../types';
+import { richText } from '../../../types';
 
-export const SpanText = ({ text }: { text: richText[] }) => {
-  if (!text) {
+export const NotionText = ({ richTexts }: { richTexts: richText[] }) => {
+  if (!richTexts) {
     return null;
   }
-  return text.map((value, i) => {
+
+  const elements = richTexts.map((value, index) => {
     const {
       annotations: { bold, code, color, italic, strikethrough, underline },
       text,
     } = value;
     return (
       <span
-        key={i + i}
+        key={index}
         className={[
           bold ? 'font-bold' : '',
           code ? 'bg-gray-100 p-1 font-mono text-sm rounded-md' : '',
@@ -21,14 +22,10 @@ export const SpanText = ({ text }: { text: richText[] }) => {
         ].join(' ')}
         style={color !== 'default' ? { color } : {}}
       >
-        {text.link ? (
-          <a href={text.link.url} className='text-indigo-400 hover:underline'>
-            {text.content}
-          </a>
-        ) : (
-          text.content
-        )}
+        {text.link ? <a href={text.link.url}>{text.content}</a> : text.content}
       </span>
     );
   });
+
+  return <>{elements}</>;
 };

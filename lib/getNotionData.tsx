@@ -4,7 +4,7 @@ import type {
   QueryDatabaseParameters,
 } from '@notionhq/client/build/src/api-endpoints.d';
 
-import { PostProps } from '../types';
+import { PostProps } from '../src/types';
 
 export type blockWithChildren = ListBlockChildrenResponse['results'][number] & {
   children?: blockWithChildren[];
@@ -33,35 +33,27 @@ export const getNotionData = async (
       description: '',
       title: '',
       id: result.id,
-      date: '',
+      date: new Date(),
     };
     Object.keys(d).forEach((key) => {
       const property = d[key];
       if (property.type === 'people') {
-        // @ts-ignore
         item[key.toLowerCase()] = property.people.map((p) => (p as any).name);
       } else if (property.type === 'rich_text') {
-        // @ts-ignore
         item[key.toLowerCase()] = property.rich_text[0].plain_text;
       } else if (property.type === 'files') {
         if (property.files[0].type === 'external') {
-          // @ts-ignore
           item[key.toLowerCase()] = property.files[0].name;
         } else {
-          // @ts-ignore
           item[key.toLowerCase()] = property.files[0].file?.url;
         }
       } else if (property.type === 'title') {
-        // @ts-ignore
         item[key.toLowerCase()] = property.title[0].plain_text;
       } else if (property.type === 'checkbox') {
-        // @ts-ignore
         item[key.toLowerCase()] = property.checkbox;
       } else if (property.type === 'multi_select') {
-        // @ts-ignore
         item[key.toLowerCase()] = property.multi_select[0].name;
       } else if (property.type === 'date') {
-        // @ts-ignore
         item[key.toLowerCase()] = property.date.start;
       }
     });
