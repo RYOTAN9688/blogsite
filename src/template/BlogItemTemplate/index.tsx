@@ -1,4 +1,4 @@
-import { Fragment, VFC } from 'react';
+import { VFC } from 'react';
 import Image from 'next/image';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { monokai } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
@@ -81,7 +81,11 @@ export const BlogItemTemplate: VFC<Props> = ({
                   );
 
                 case 'numbered_list_item':
-                  return <li className='text-gray-700'>{block.numbered_list_item.text}</li>;
+                  return (
+                    <li className='text-gray-700'>
+                      <NotionText richTexts={block.numbered_list_item.text as richText[]} />
+                    </li>
+                  );
 
                 case 'bulleted_list_item':
                   return (
