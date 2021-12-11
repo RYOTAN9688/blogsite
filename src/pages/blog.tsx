@@ -1,21 +1,20 @@
 import { GetStaticProps } from 'next';
 
-import { getNotionData } from '../../lib/getNotionData';
-
 import { PageHead } from '../components/PageHead';
-import { TopPage } from '../components/Toppage';
+import { BlogTemplate } from '../template/BlogTemplate';
+import { getNotionData } from './api/getBlock';
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getNotionData(process.env.NOTION_DATABASE_ID as string);
+  const posts = await getNotionData();
 
   return {
     props: {
       posts,
     },
-    revalidate: 1,
+    revalidate: 3600,
   };
 };
-export default function Home({ posts = [] }) {
+const BlogPage = ({ posts = [] }) => {
   return (
     <>
       <PageHead
@@ -24,7 +23,9 @@ export default function Home({ posts = [] }) {
         type='artcle'
         url='https://portfolio-sigma-lime.vercel.app/blog'
       />
-      <TopPage posts={posts} />
+      <BlogTemplate BlogTitle='BlogPage' posts={posts} />
     </>
   );
-}
+};
+
+export default BlogPage;

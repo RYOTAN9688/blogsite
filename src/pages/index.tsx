@@ -1,21 +1,15 @@
-import Container from '../components/Container';
-import { PageHead } from '../components/PageHead';
-import Profile from '../components/Profile';
+import { NextPage } from 'next';
+import { TopTemplate } from '../template/TopTemplate';
 
-export const databaseId = process.env.NOTION_DATABASE_ID;
-
-export default function Home() {
+const Home: NextPage = () => {
   return (
-    <>
-      <PageHead
-        title='TopPage'
-        description='爆速で動くportfolioサイトです'
-        type='website'
-        url='https://portfolio-sigma-lime.vercel.app/'
-      />
-      <Container>
-        <Profile />
-      </Container>
-    </>
+    <TopTemplate
+      title='Home'
+      description='爆速で動くportfolioサイトです'
+      type='Website'
+      url='https://portfolio-sigma-lime.vercel.app/'
+    />
   );
-}
+};
+
+export default Home;

@@ -1,9 +1,11 @@
+import { VFC } from 'react';
 import Image from 'next/image';
-import { otherSkilldata, skilldata } from './Skilldata';
+
+import { otherSkilldata, skilldata } from './data/Skilldata';
 
 const skills = skilldata;
 
-export const Skills = () => {
+export const Skills: VFC = () => {
   return (
     <>
       <h1 className='font-bold text-4xl pb-3 text-red-500 '>Skills</h1>

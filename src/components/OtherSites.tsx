@@ -1,6 +1,8 @@
-import GitHub from '../svgs/GitHub';
-import Twitter from '../svgs/Twitter';
-import GitLab from '../svgs/GitLab';
+import GitHub from './atoms/icon/GitHub';
+import Twitter from './atoms/icon/Twitter';
+
+import { VFC } from 'react';
+import GitLab from './atoms/icon/GitLab';
 
 export const OtherSites = [
   {
@@ -28,7 +30,7 @@ export const OtherSites = [
   // },
 ];
 
-export default function OtherSite() {
+export const OtherSite: VFC = () => {
   return (
     <div className='flex space-x-5 justify-center pt-5'>
       {OtherSites.map(({ Comp, link, alt }) => {
@@ -40,4 +42,4 @@ export default function OtherSite() {
       })}
     </div>
   );
-}
+};
