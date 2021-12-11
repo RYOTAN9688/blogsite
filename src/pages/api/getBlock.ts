@@ -12,6 +12,16 @@ const database_id = process.env.NOTION_DATABASE_ID as string;
 export const getNotionData = async () => {
   const response = await notion.databases.query({
     database_id: database_id,
+    filter: {
+      or: [
+        {
+          property: 'Published',
+          checkbox: {
+            equals: true,
+          },
+        },
+      ],
+    },
   });
   const { results } = response;
   const posts = results.map((result) => {

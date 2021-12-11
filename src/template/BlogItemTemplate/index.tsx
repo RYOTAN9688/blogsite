@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { Fragment, VFC } from 'react';
 import Image from 'next/image';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { monokai } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
@@ -6,9 +6,11 @@ import { monokai } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 import { PageHead } from '../../components/PageHead';
 import { Header } from '../../components/organisms/Header';
 import { Footer } from '../../components/organisms/Footer';
-import { NotionBlock } from '../../types/notion';
+import { blockWithChildren, NotionBlock } from '../../types/notion';
 import { NotionText } from '../../components/notion/notionText';
 import { richText } from '../../types';
+import { CodeBlock } from '../../components/notion/codeBlock';
+import { CallOut } from '../../components/atoms/callout';
 
 interface Props {
   page: any;
@@ -46,7 +48,7 @@ export const BlogItemTemplate: VFC<Props> = ({
           </span>
           <h1 className='font-bold  md:text-5xl tracking-tight mb-5 text-black'>{slug}</h1>
           <section>
-            {blocks.map((block) => {
+            {blocks.map((block: blockWithChildren) => {
               const { type, id } = block;
 
               switch (type) {
@@ -56,26 +58,38 @@ export const BlogItemTemplate: VFC<Props> = ({
                       <NotionText richTexts={block.paragraph.text as richText[]} />
                     </p>
                   );
+
                 case 'heading_1':
                   return (
                     <h1 className='font-mono text-3xl md:text-5xl tracking-tight my-2 '>
                       <NotionText richTexts={block.heading_1.text as richText[]} />
                     </h1>
                   );
+
                 case 'heading_2':
                   return (
                     <h2 className='font-mono text-2xl md:text-3xl tracking-tight my-2 '>
                       <NotionText richTexts={block.heading_2.text as richText[]} />
                     </h2>
                   );
+
                 case 'heading_3':
                   return (
                     <h3 className='font-mono text-lg md:text-xl tracking-tight my-2 '>
                       <NotionText richTexts={block.heading_3.text as richText[]} />
                     </h3>
                   );
+
                 case 'numbered_list_item':
                   return <li className='text-gray-700'>{block.numbered_list_item.text}</li>;
+
+                case 'bulleted_list_item':
+                  return (
+                    <li>
+                      <NotionText richTexts={block.bulleted_list_item.text as richText[]} />
+                    </li>
+                  );
+
                 case 'to_do':
                   const toDoValue = block[type];
                   return (
@@ -94,29 +108,39 @@ export const BlogItemTemplate: VFC<Props> = ({
                       <summary>
                         <NotionText richTexts={blockValue.text as richText[]} />
                       </summary>
-                      {/* <>
-                        {block.children?.map((block) => {
-                          <Fragment key={block.id}>{CodeBlock(block)}</Fragment>;
-                        })}
-                      </> */}
+                      {CodeBlock(block)}
                     </details>
                   );
+
+                case 'child_page':
+                  const childPageValue = block[type];
+                  return <p>{childPageValue.title}</p>;
 
                 case 'image':
                   const imageSrc = block.image;
                   const caption =
                     imageSrc.caption?.length > 0 ? imageSrc.caption[0].plain_text : '';
                   return (
-                    <figure>
-                      <Image
-                        src={block.image.type[0]}
-                        alt={caption}
-                        layout='fill'
-                        objectFit='contain'
-                      />
-                      {caption && <figcaption className='mt-2'>{caption}</figcaption>}
-                    </figure>
+                    <Image
+                      //@ts-ignore
+                      src={block[type].file.url}
+                      alt={caption}
+                      layout='fill'
+                      objectFit='contain'
+                    />
                   );
+
+                case 'quote':
+                  const quoteValue = block.quote;
+                  return (
+                    <blockquote>
+                      <NotionText richTexts={quoteValue.text as richText[]} />
+                    </blockquote>
+                  );
+
+                case 'callout':
+                  return <CallOut block={block} />;
+
                 case 'bookmark':
                   return (
                     <iframe
@@ -124,6 +148,7 @@ export const BlogItemTemplate: VFC<Props> = ({
                       className='w-full block border-0 h-36'
                     ></iframe>
                   );
+
                 case 'code':
                   return (
                     <div>
@@ -133,6 +158,7 @@ export const BlogItemTemplate: VFC<Props> = ({
                       </SyntaxHighlighter>
                     </div>
                   );
+
                 default:
                   return (
                     <p>
