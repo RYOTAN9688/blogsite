@@ -10,7 +10,7 @@ import { blockWithChildren, NotionBlock } from '../../types/notion';
 import { NotionText } from '../../components/notion/notionText';
 import { richText } from '../../types';
 import { CodeBlock } from '../../components/notion/codeBlock';
-import { CallOut } from '../../components/atoms/callout';
+import { Callout } from '../../components/atoms/callout';
 
 interface Props {
   page: any;
@@ -129,8 +129,8 @@ export const BlogItemTemplate: VFC<Props> = ({
                       //@ts-ignore
                       src={block[type].file.url}
                       alt={caption}
-                      layout='fill'
-                      objectFit='contain'
+                      width={380}
+                      height={200}
                     />
                   );
 
@@ -142,8 +142,8 @@ export const BlogItemTemplate: VFC<Props> = ({
                     </blockquote>
                   );
 
-                case 'callout':
-                  return <CallOut block={block} />;
+                // case 'callout':
+                //   return <Callout block={block} />;
 
                 case 'bookmark':
                   return (
@@ -166,8 +166,8 @@ export const BlogItemTemplate: VFC<Props> = ({
                 default:
                   return (
                     <p>
-                      `Unsupported block ($
-                      {type === 'unsupported' ? 'unsupported by Notion API' : type})`;
+                      サポートしていないブロックです ($
+                      {type === 'unsupported' ? 'unsupported by Notion API' : type});
                     </p>
                   );
               }
