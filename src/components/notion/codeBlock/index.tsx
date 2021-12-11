@@ -1,13 +1,15 @@
 import Image from 'next/image';
+import { Fragment } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { monokai } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
-import { richText } from '../../../types';
 
-import { NotionBlock } from '../../../types/notion';
 import { NotionText } from '../notionText';
 
-export const CodeBlock = (block: NotionBlock) => {
-  const { type } = block;
+import { richText } from '../../../types';
+import { blockWithChildren } from '../../../types/notion';
+
+export const CodeBlock = (block: blockWithChildren) => {
+  const { type, id } = block;
 
   switch (type) {
     case 'paragraph':
@@ -35,18 +37,31 @@ export const CodeBlock = (block: NotionBlock) => {
         </h3>
       );
     case 'numbered_list_item':
-      return (
-        <li className='text-gray-700'>
-          <NotionText richTexts={block.numbered_list_item.text as richText[]} />
-        </li>
-      );
+      return <li className='text-gray-700'>{block.numbered_list_item.text}</li>;
     case 'to_do':
+      const toDoValue = block[type];
       return (
         <div>
-          <label>
-            <input type='checkbox' />
+          <label htmlFor={id}>
+            <input defaultChecked={toDoValue.checked} type='checkbox' />
+            <NotionText richTexts={toDoValue.text as richText[]} />
           </label>
         </div>
+      );
+
+    case 'toggle':
+      const blockValue = block[type];
+      return (
+        <details>
+          <summary>
+            <NotionText richTexts={blockValue.text as richText[]} />
+          </summary>
+          <>
+            {block.children?.map((block) => {
+              <Fragment key={block.id}>{CodeBlock(block)}</Fragment>;
+            })}
+          </>
+        </details>
       );
 
     case 'image':
@@ -68,7 +83,6 @@ export const CodeBlock = (block: NotionBlock) => {
     case 'code':
       return (
         <div>
-          <div className=''>{block.code.language}</div>
           <SyntaxHighlighter language={block.code.language} style={monokai}>
             {block.code.text.map(({ plain_text }) => plain_text)}
           </SyntaxHighlighter>

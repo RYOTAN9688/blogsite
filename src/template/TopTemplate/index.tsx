@@ -1,7 +1,8 @@
 import { VFC } from 'react';
+import { Footer } from '../../components/organisms/Footer';
+import { Header } from '../../components/organisms/Header';
 import { PageHead } from '../../components/PageHead';
 import { Profile } from '../../components/Profile';
-import Container from '../../layouts/Container';
 
 export const databaseId = process.env.NOTION_DATABASE_ID;
 
@@ -15,9 +16,11 @@ export const TopTemplate: VFC<Props> = ({ title, description, type, url }) => {
   return (
     <>
       <PageHead title={title} description={description} type={type} url={url} />
-      <Container classname='animate-color-change-2x'>
+      <Header />
+      <main>
         <Profile />
-      </Container>
+      </main>
+      <Footer />
     </>
   );
 };

@@ -1,10 +1,11 @@
 import { GetStaticProps } from 'next';
-import { getNotionData } from '../../lib/getNotionData';
+
 import { PageHead } from '../components/PageHead';
 import { BlogTemplate } from '../template/BlogTemplate';
+import { getNotionData } from './api/getBlock';
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getNotionData(process.env.NOTION_DATABASE_ID as string);
+  const posts = await getNotionData();
 
   return {
     props: {

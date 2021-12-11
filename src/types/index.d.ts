@@ -46,6 +46,4 @@ export type richText = {
   };
   plain_text: string;
   href: string | null;
-  id: number | string;
-  level: string;
 };

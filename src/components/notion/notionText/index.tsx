@@ -1,6 +1,8 @@
 import { richText } from '../../../types';
 
 export const NotionText = ({ richTexts }: { richTexts: richText[] }) => {
+  console.log(richTexts);
+
   if (!richTexts) {
     return null;
   }

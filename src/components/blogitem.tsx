@@ -2,20 +2,26 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 interface Props {
-  url: string;
-  title: string;
-  description: string;
-  image: string;
-  date: Date;
+  blogUrl: string;
+  blogTitle: string;
+  blogDescription: string;
+  blogThumbnail: string;
+  date?: string;
 }
 
-export const Blogitem: React.VFC<Props> = ({ url, title, description, image, date }) => {
+export const Blogitem: React.VFC<Props> = ({
+  blogUrl,
+  blogTitle,
+  blogDescription,
+  blogThumbnail,
+  date,
+}) => {
   return (
     <div className='shadow-xl cursor-pointer transition duration-100  ease-linear transform hover:scale-95 hover:shadow-lg flex flex-col items-center py-4 '>
-      <Link href={url}>
+      <Link href={blogUrl}>
         <a aria-label='ブログ記事に飛ぶ'>
           <Image
-            src={image}
+            src={blogThumbnail}
             width={200}
             height={200}
             alt=''
@@ -25,11 +31,11 @@ export const Blogitem: React.VFC<Props> = ({ url, title, description, image, dat
       </Link>
       <div>
         <h2 className='py-3-3'>
-          <Link href={url}>
-            <a className='font-bold text-xl hover:text-gray-400 '>{title}</a>
+          <Link href={blogUrl}>
+            <a className='font-bold text-xl hover:text-gray-400 '>{blogTitle}</a>
           </Link>
         </h2>
-        <p className='pb-4'> {description}</p>
+        <p className='pb-4'> {blogDescription}</p>
         <p>{date}</p>
       </div>
     </div>
