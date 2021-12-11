@@ -32,10 +32,10 @@ export const Blogitem: React.VFC<Props> = ({
       <div>
         <h2 className='py-3-3'>
           <Link href={blogUrl}>
-            <a className='font-bold text-xl hover:text-gray-400 '>{blogTitle}</a>
+            <a className='font-bold font-fancy text-xl hover:text-gray-400 '>{blogTitle}</a>
           </Link>
         </h2>
-        <p className='pb-4'> {blogDescription}</p>
+        <p className='pb-4 font-fancy'> {blogDescription}</p>
         <p>{date}</p>
       </div>
     </div>

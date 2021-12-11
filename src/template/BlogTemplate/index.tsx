@@ -18,7 +18,7 @@ export const BlogTemplate: VFC<{ BlogTitle: string; posts: PostProps[] }> = ({
       <main id='skip' className='px-4 '>
         <div className='max-w-2xl mx-auto mb-16 '>
           <div className='mb-16'>
-            <title className='font-bold text-3xl md:text-center w-full md:text-5xl tracking-tight mb-2 text-black mx-auto max-w-xl'>
+            <title className='font-bold font-fancy text-3xl md:text-center w-full md:text-5xl tracking-tight mb-2 text-black mx-auto max-w-xl'>
               {BlogTitle}
             </title>
             <p className='text-gray-700  pt-4 md:text-center max-w-xl mx-auto'>{t.BlogContent}</p>

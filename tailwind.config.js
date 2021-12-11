@@ -33,6 +33,9 @@ module.exports = {
           },
         },
       },
+      fontFamily: {
+        fancy: ['Roboto'],
+      },
     },
   },
   variants: {
