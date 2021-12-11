@@ -142,8 +142,8 @@ export const BlogItemTemplate: VFC<Props> = ({
                     </blockquote>
                   );
 
-                // case 'callout':
-                //   return <Callout block={block} />;
+                case 'callout':
+                  return <Callout block={block} />;
 
                 case 'bookmark':
                   return (
