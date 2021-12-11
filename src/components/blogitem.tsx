@@ -24,8 +24,8 @@ export const Blogitem: React.VFC<Props> = ({
             src={blogThumbnail}
             width={200}
             height={200}
-            alt=''
-            className='w-full h-full object-cover inset-0   '
+            alt='blog記事'
+            className='w-full h-full object-cover inset-0 '
           />
         </a>
       </Link>
