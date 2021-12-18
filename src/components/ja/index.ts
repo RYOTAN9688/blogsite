@@ -5,6 +5,8 @@ type Props = {
   HobbyContent1: string;
   HobbyContent2: string;
   BlogContent: string;
+  RecentblogPosts: string;
+  blogPosts: string;
 };
 
 export const ja: Props = {
@@ -17,4 +19,6 @@ export const ja: Props = {
   HobbyContent2:
     '車を走らせることが好きなので、天気の良い日には海に行ったり、景色のいいところまでドライブします！',
   BlogContent: 'NotionAPIを使用したブログページを作成しました！',
+  RecentblogPosts: '最近のブログ記事',
+  blogPosts: 'ブログ記事',
 };

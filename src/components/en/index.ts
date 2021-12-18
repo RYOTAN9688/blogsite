@@ -5,6 +5,8 @@ type Props = {
   HobbyContent1: string;
   HobbyContent2: string;
   BlogContent: string;
+  RecentblogPosts: string;
+  blogPosts: string;
 };
 export const en: Props = {
   About:
@@ -16,4 +18,6 @@ export const en: Props = {
   HobbyContent2:
     'I like to drive my car, so when the weather is nice, I go to beach or drive to scenic places!!',
   BlogContent: 'I have created a blog page using the Notion API!',
+  RecentblogPosts: 'This is a recent blog post',
+  blogPosts: 'This is a blog article',
 };
