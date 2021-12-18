@@ -9,9 +9,7 @@ export const Title: VFC<TitleProps> = (props: TitleProps) => {
 
   return (
     <Link href='/'>
-      <a className='ml-3 text-3xl cursor-pointer hover:text-gray-300 text-white md:mb-0 font-fancy '>
-        {title}
-      </a>
+      <a className='ml-3 text-3xl cursor-pointer  text-white md:mb-0 font-fancy '>{title}</a>
     </Link>
   );
 };
