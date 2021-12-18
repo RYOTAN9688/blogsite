@@ -38,15 +38,15 @@ export const BlogItemTemplate: VFC<Props> = ({
       <PageHead title={pageTitle} description={pageDescription} type={pageType} url={pageUrl} />
       <Header />
       <main id='skip' className='px-4 '>
-        <article className='flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 w-full'>
-          <span className='text-sm text-gray-700'>
+        <article className='flex flex-col font-fancy justify-center items-start max-w-2xl mx-auto mb-16 w-full'>
+          <span className='text-sm text-black'>
             {new Date(page.pageInfo.created_time).toLocaleString('ja-JP', {
               year: 'numeric',
               month: 'numeric',
               day: 'numeric',
             })}
           </span>
-          <h1 className='font-bold  md:text-5xl tracking-tight mb-5 text-black'>{slug}</h1>
+          <h1 className='font-fancy  md:text-5xl tracking-tight mb-5 text-black'>{slug}</h1>
           <section>
             {blocks.map((block: blockWithChildren) => {
               const { type, id } = block;
@@ -54,35 +54,35 @@ export const BlogItemTemplate: VFC<Props> = ({
               switch (type) {
                 case 'paragraph':
                   return (
-                    <p className='mb-4 text-gray-700'>
+                    <p className='mb-4 text-black'>
                       <NotionText richTexts={block.paragraph.text as richText[]} />
                     </p>
                   );
 
                 case 'heading_1':
                   return (
-                    <h1 className='font-mono text-3xl md:text-5xl tracking-tight my-2 '>
+                    <h1 className='font-fancy text-2xl md:text-4xl tracking-tight my-2 '>
                       <NotionText richTexts={block.heading_1.text as richText[]} />
                     </h1>
                   );
 
                 case 'heading_2':
                   return (
-                    <h2 className='font-mono text-2xl md:text-3xl tracking-tight my-2 '>
+                    <h2 className='font-fancy text-2xl md:text-3xl tracking-tight my-2 '>
                       <NotionText richTexts={block.heading_2.text as richText[]} />
                     </h2>
                   );
 
                 case 'heading_3':
                   return (
-                    <h3 className='font-mono text-lg md:text-xl tracking-tight my-2 '>
+                    <h3 className='font-fancy text-lg md:text-xl tracking-tight my-2 '>
                       <NotionText richTexts={block.heading_3.text as richText[]} />
                     </h3>
                   );
 
                 case 'numbered_list_item':
                   return (
-                    <li className='text-gray-700'>
+                    <li className='text-gray-700 font-fancy'>
                       <NotionText richTexts={block.numbered_list_item.text as richText[]} />
                     </li>
                   );
@@ -155,9 +155,15 @@ export const BlogItemTemplate: VFC<Props> = ({
 
                 case 'code':
                   return (
-                    <div>
-                      <div className='font-bold pb-2'>{block.code.language}</div>
-                      <SyntaxHighlighter language={block.code.language} style={monokai}>
+                    <div className='container  '>
+                      <div className='font-fancy  font-medium bg-gray-700  text-white pb-2'>
+                        {block.code.language}
+                      </div>
+                      <SyntaxHighlighter
+                        language={block.code.language.toLowerCase()}
+                        style={monokai}
+                        customStyle={{ padding: '12px 16px', lineHeight: '30px' }}
+                      >
                         {block.code.text.map(({ plain_text }) => plain_text)}
                       </SyntaxHighlighter>
                     </div>

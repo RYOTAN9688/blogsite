@@ -14,6 +14,10 @@ export default class Document extends NextDocument {
           <meta name='msapplication-TileColor' content='#ffffff' />
           <meta name='msapplication-config' content='/favicons/browserconfig.xml' />
           <meta name='theme-color' content='#ffffff' />
+          <link
+            href='https://fonts.googleapis.com/css2?family=Roboto&display=swap'
+            rel='stylesheet'
+          ></link>
         </Head>
         <body>
           <Main />

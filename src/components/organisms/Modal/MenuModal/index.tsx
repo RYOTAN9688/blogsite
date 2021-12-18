@@ -14,26 +14,30 @@ export const Modal: VFC<Props> = ({ setIsOpen }) => {
     <>
       <div
         onClick={closeModal}
-        className='bg-white fixed w-3/6  inset-0 z-50 overflow-hidden md:relative md:w-full md:h-full'
+        className='flex flex-col items-center fixed bg-black  w-4/6 inset-0  z-50 overflow-hidden order-3 md:relative md:items-center md:w-auto  md:flex md:order-1'
       >
-        <div className='flex flex-col py-8 justify-centeritems-center   md:py-0'>
+        <div className='md:flex  items-center py-8 justify-between text-base font-fancy md:pt-0 '>
           <Link href='/'>
-            <a className='text-gray-900 mr-5text-gray-900 hover:text-blue-500  hover:underline text-xl py-2  font-bold md:py-0 '>
+            <a className='inline-block  no-underline text-white hover:text-gray-400  py-2 px-4 '>
               Home
             </a>
           </Link>
           <Link href='/blog'>
-            <a className=' text-gray-900  hover:text-blue-500 hover:underline text-xl py-2  font-bold'>
+            <a className='inline-block no-underline text-white hover:text-gray-400  py-2 px-4'>
               Blog
             </a>
           </Link>
-          <nav className='py-2'>
+          <nav className='py-2 flex items-center'>
             <Link href='/' locale='ja'>
-              <a className='text-xl text-gray-900 hover:text-blue-500  font-bold'>Ja</a>
+              <a className='inline-block  no-underline text-white hover:text-gray-400  py-2 px-4 '>
+                Ja
+              </a>
             </Link>
-            /
+            <div className='text-white'>/</div>
             <Link href='/en' locale='en'>
-              <a className='text-xxl text-gray-900 hover:text-blue-500  font-bold'>En</a>
+              <a className='inline-block  no-underline text-white hover:text-gray-400  py-2 px-4 '>
+                En
+              </a>
             </Link>
           </nav>
         </div>

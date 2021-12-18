@@ -1,4 +1,5 @@
 import { VFC } from 'react';
+import Link from 'next/link';
 
 interface TitleProps {
   title: string;
@@ -6,5 +7,9 @@ interface TitleProps {
 export const Title: VFC<TitleProps> = (props: TitleProps) => {
   const { title } = props;
 
-  return <h2 className='ml-3 text-3xl text-gray-900 md:mb-0 title-font '>{title}</h2>;
+  return (
+    <Link href='/'>
+      <a className='ml-3 text-3xl cursor-pointer  text-white md:mb-0 font-fancy '>{title}</a>
+    </Link>
+  );
 };
