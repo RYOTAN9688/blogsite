@@ -1,8 +1,8 @@
 import { VFC } from 'react';
 import { Footer } from '../../components/organisms/Footer';
 import { Header } from '../../components/organisms/Header';
+import { Profile } from '../../components/organisms/Profile';
 import { PageHead } from '../../components/PageHead';
-import { Profile } from '../../components/Profile';
 
 export const databaseId = process.env.NOTION_DATABASE_ID;
 

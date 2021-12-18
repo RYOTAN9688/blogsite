@@ -1,6 +1,7 @@
 import { VFC } from 'react';
-import { Self_introduction } from './Self-introduction';
-import { Skills } from './Skill';
+import { Skills } from '../Skill';
+
+import { Self_introduction } from '../SkillInduction';
 
 export const Profile: VFC = () => {
   return (

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { VFC } from 'react';
-import { useLocale } from '../hooks/useLacale';
+import { useLocale } from '../../../hooks/useLacale';
 
 export const Self_introduction: VFC = () => {
   const { t } = useLocale();
