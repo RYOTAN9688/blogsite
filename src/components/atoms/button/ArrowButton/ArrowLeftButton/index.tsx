@@ -2,6 +2,7 @@ import { VFC, memo } from 'react';
 import styled from 'styled-components';
 import { ArrowBackIosOutlined } from '@mui/icons-material';
 import { ArrowProps, Props } from '../types';
+import { sp } from '../../../../../styles/media';
 
 const Arrow = styled.button`
   position: absolute;

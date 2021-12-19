@@ -1,6 +1,7 @@
 import { VFC, useState, memo } from 'react';
 
 import styled from 'styled-components';
+
 import { PostProps } from '../../../types';
 
 import { ArrowLeftButton } from '../../atoms/button/ArrowButton/ArrowLeftButton';

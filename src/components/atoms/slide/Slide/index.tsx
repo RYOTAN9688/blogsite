@@ -1,6 +1,7 @@
 import { VFC } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
+import { sp } from '../../../../styles/media';
 
 interface SlideProps {
   blogUrl: string;
@@ -14,6 +15,7 @@ const Slide = styled.div`
   height: 80vh;
   display: flex;
   align-items: center;
+  ${sp`flex-flow:column`}
 `;
 const ImgContainer = styled.div`
   height: 100%;
@@ -27,10 +29,15 @@ const Image = styled.img`
 const InfoContainer = styled.div`
   flex: 1;
   padding: 50px;
+  ${sp`width:80%`}
+  ${sp`padding-top:10px`}
 `;
 
-const Title = styled.h1`
+const Title = styled.p`
   font-size: 70px;
+  ${sp`font-size:40px`}
+  ${sp`overflow-wrap: break-word`}
+  ${sp`word-wrap: break-word`}
 `;
 
 const Desc = styled.p`
@@ -38,6 +45,7 @@ const Desc = styled.p`
   font-size: 20px;
   font-weight: 500;
   letter-spacing: 1px;
+  ${sp`margin:0`}
 `;
 
 export const SlideTemlpete: VFC<SlideProps> = ({
