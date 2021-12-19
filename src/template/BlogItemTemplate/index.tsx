@@ -155,7 +155,7 @@ export const BlogItemTemplate: VFC<Props> = ({
 
                 case 'code':
                   return (
-                    <div className='container  '>
+                    <div className='container w-screen'>
                       <div className='font-fancy  font-medium bg-gray-700  text-white pb-2'>
                         {block.code.language}
                       </div>

@@ -1,6 +1,6 @@
 import { VFC } from 'react';
+import { Blogitem } from '../../components/organisms/blogItem';
 
-import { Blogitem } from '../../components/blogitem';
 import { Footer } from '../../components/organisms/Footer';
 import { Header } from '../../components/organisms/Header';
 import { Slider } from '../../components/organisms/Slider';
