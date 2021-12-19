@@ -20,6 +20,7 @@ const Slide = styled.div`
 const ImgContainer = styled.div`
   height: 100%;
   flex: 1;
+  ${sp`height:80%`}
 `;
 
 const Image = styled.img`
@@ -30,12 +31,13 @@ const InfoContainer = styled.div`
   flex: 1;
   padding: 50px;
   ${sp`width:80%`}
+  ${sp`padding:0`}
   ${sp`padding-top:10px`}
 `;
 
 const Title = styled.p`
   font-size: 70px;
-  ${sp`font-size:40px`}
+  ${sp`font-size:30px`}
   ${sp`overflow-wrap: break-word`}
   ${sp`word-wrap: break-word`}
 `;
