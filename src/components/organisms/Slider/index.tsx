@@ -52,6 +52,11 @@ const SliderComponent: VFC<Props> = ({ posts }) => {
                 blogDescription={post.description}
                 blogThumbnail={post.thumbnail}
                 blogUrl={`/${post.slug}`}
+                date={new Date(post.date).toLocaleString('ja-JP', {
+                  year: 'numeric',
+                  month: 'numeric',
+                  day: 'numeric',
+                })}
               />
             </div>
           ))}

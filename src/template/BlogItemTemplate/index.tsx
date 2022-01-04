@@ -38,7 +38,7 @@ export const BlogItemTemplate: VFC<Props> = ({
       <PageHead title={pageTitle} description={pageDescription} type={pageType} url={pageUrl} />
       <Header />
       <main id='skip' className='px-4 '>
-        <article className='flex flex-col font-fancy justify-center items-start max-w-2xl mx-auto mb-16 w-full'>
+        <article className='flex flex-col font-fancy justify-center items-start max-w-2xl mx-auto mb-16 w-full '>
           <span className='text-sm text-black'>
             {new Date(page.pageInfo.created_time).toLocaleString('ja-JP', {
               year: 'numeric',
@@ -155,8 +155,8 @@ export const BlogItemTemplate: VFC<Props> = ({
 
                 case 'code':
                   return (
-                    <div className='container w-screen'>
-                      <div className='font-fancy  font-medium bg-gray-700  text-white pb-2'>
+                    <div className='container w-screen md:w-full'>
+                      <div className='font-fancy font-medium bg-gray-700  text-white pb-2'>
                         {block.code.language}
                       </div>
                       <SyntaxHighlighter

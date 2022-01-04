@@ -8,6 +8,7 @@ interface SlideProps {
   blogTitle: string;
   blogDescription: string;
   blogThumbnail: string;
+  date: string;
 }
 
 const Slide = styled.div`
@@ -55,6 +56,7 @@ export const SlideTemlpete: VFC<SlideProps> = ({
   blogThumbnail,
   blogTitle,
   blogDescription,
+  date,
 }) => {
   return (
     <Link href={blogUrl}>
@@ -66,6 +68,7 @@ export const SlideTemlpete: VFC<SlideProps> = ({
           <InfoContainer>
             <Title>{blogTitle}</Title>
             <Desc>{blogDescription}</Desc>
+            <p>{date}</p>
           </InfoContainer>
         </Slide>
       </a>
