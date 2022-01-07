@@ -20,13 +20,9 @@ export const Blogitem: React.VFC<Props> = ({
     <div className='shadow-xl cursor-pointer transition duration-100  ease-linear transform hover:scale-95 hover:shadow-lg flex flex-col items-center py-4 '>
       <Link href={blogUrl}>
         <a aria-label='ブログ記事に飛ぶ'>
-          <Image
-            src={blogThumbnail}
-            width={200}
-            height={200}
-            alt='blog記事'
-            className='w-full h-full object-cover inset-0 '
-          />
+          <div className='w-full h-full object-cover inset-0 '>
+            <Image src={blogThumbnail} width={380} height={300} alt='blog記事' />
+          </div>
         </a>
       </Link>
       <div>
