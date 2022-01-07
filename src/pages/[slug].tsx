@@ -61,7 +61,7 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
       blocks: blocksWithChildren,
       slug,
     },
-    revalidate: 3600,
+    revalidate: 10,
   };
 };
 

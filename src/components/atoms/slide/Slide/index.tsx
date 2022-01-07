@@ -49,6 +49,8 @@ const Desc = styled.p`
   font-weight: 500;
   letter-spacing: 1px;
   ${sp`margin:0`}
+  ${sp`overflow-wrap: break-word`}
+  ${sp`word-wrap: break-word`}
 `;
 
 export const SlideTemlpete: VFC<SlideProps> = ({
