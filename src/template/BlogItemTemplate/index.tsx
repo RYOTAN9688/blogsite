@@ -3,7 +3,7 @@ import Image from 'next/image';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { monokai } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
-import { PageHead } from '../../components/PageHead';
+import { PageHead } from '../../hooks/SEO/PageHead';
 import { Header } from '../../components/organisms/Header';
 import { Footer } from '../../components/organisms/Footer';
 import { blockWithChildren, NotionBlock } from '../../types/notion';
@@ -54,28 +54,28 @@ export const BlogItemTemplate: VFC<Props> = ({
               switch (type) {
                 case 'paragraph':
                   return (
-                    <p className='mb-4 text-black'>
+                    <p className='font-fancy mb-4 text-black whitespace-normal'>
                       <NotionText richTexts={block.paragraph.text as richText[]} />
                     </p>
                   );
 
                 case 'heading_1':
                   return (
-                    <h1 className='font-fancy text-2xl md:text-4xl tracking-tight my-2 '>
+                    <h1 className='font-fancy text-lg md:text-2xl tracking-tight my-2 text-gray-900 whitespace-normal '>
                       <NotionText richTexts={block.heading_1.text as richText[]} />
                     </h1>
                   );
 
                 case 'heading_2':
                   return (
-                    <h2 className='font-fancy text-2xl md:text-3xl tracking-tight my-2 '>
+                    <h2 className='font-fancy text-2xl md:text-2xl tracking-tight my-2 whitespace-normal '>
                       <NotionText richTexts={block.heading_2.text as richText[]} />
                     </h2>
                   );
 
                 case 'heading_3':
                   return (
-                    <h3 className='font-fancy text-lg md:text-xl tracking-tight my-2 '>
+                    <h3 className='font-fancy text-lg md:text-xl tracking-tight my-2  whitespace-normal '>
                       <NotionText richTexts={block.heading_3.text as richText[]} />
                     </h3>
                   );
@@ -155,7 +155,7 @@ export const BlogItemTemplate: VFC<Props> = ({
 
                 case 'code':
                   return (
-                    <div className='container w-screen md:w-full'>
+                    <div className='container w-screen md:w-8/12'>
                       <div className='font-fancy font-medium bg-gray-700  text-white pb-2'>
                         {block.code.language}
                       </div>

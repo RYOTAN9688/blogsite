@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next';
 
-import { PageHead } from '../components/PageHead';
+import { PageHead } from '../hooks/SEO/PageHead';
 import { BlogTemplate } from '../template/BlogTemplate';
 import { getNotionData } from './api/getBlock';
 
@@ -11,7 +11,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       posts,
     },
-    revalidate: 3600,
+    revalidate: 10,
   };
 };
 const BlogPage = ({ posts = [] }) => {

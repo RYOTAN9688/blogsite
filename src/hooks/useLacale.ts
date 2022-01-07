@@ -1,5 +1,5 @@
-import { ja } from '../components/ja';
-import { en } from '../components/en';
+import { ja } from '../components/laungage/ja';
+import { en } from '../components/laungage/en';
 import { useRouter } from 'next/dist/client/router';
 
 export const useLocale = () => {
